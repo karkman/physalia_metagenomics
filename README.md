@@ -1,4 +1,4 @@
-# Physalia Courses - Environmental Metagenomics
+# Environmental Metagenomics (Physalia Courses)
 Repository for planning the environmental metagenomics course
 
 ## Course overview

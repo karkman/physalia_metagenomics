@@ -38,3 +38,8 @@ perl ../OPERA-MS.pl \
     --no-ref-clustering \
     --out-dir RESULTS 2> log.err
 ```
+
+If it works, download a precomputed reference genome DB (requires 36 Gb of free space). 
+```
+perl OPERA-MS.pl install-db
+```

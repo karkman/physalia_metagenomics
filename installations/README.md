@@ -22,7 +22,7 @@ cd OPERA-MS
 make
 ```
 
-Check dependencies and if everythin is OK, run hybrid assembly on the test data
+Check dependencies and if everything is OK, run hybrid assembly on the test data
 ```
 perl OPERA-MS.pl check-dependency
 ```

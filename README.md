@@ -1,7 +1,13 @@
-# Environmental Metagenomics (Physalia Courses)
-Repository for planning the environmental metagenomics course
+![](physalia-logo.png)
 
-## Course overview
+# Environmental metagenomics
+
+## Instructors
+
+- Dr. Antti Karkman, University of Helsinki
+- Dr. Igor Pessi, University of Helsinki
+
+## Overview
 Metagenomics is a widely used tool for the analysis of microbial communities as it gives access to the genomes of uncultured microorganisms.
 Particularly in complex ecosystems (e.g. soil), currently uncultured taxa typically comprise a large fraction of the microbial communities.
 Metagenomics has many benefits compared to amplicon sequencing, as it gives information not only on the taxonomic diversity but also on the functional composition of microbial communities.
@@ -11,14 +17,10 @@ During this one week course you will learn state-of-the-art bioinformatic approa
 We will cover both both read- and assembly-based methods, focusing on the strenght of each of these methods depending on the research question.
 We will use data from both short- (e.g. Illumina) and long-read (e.g. Nanopore) sequencing platforms, as it improves dramatically MAG assembling and binning compared to short-read-only methods.
 
-## Target audience
-- Anyone with an interest in metagenome sequencing (MSc and PhD students, postdoctoral researchers, PI's...)
+## Prerequisites
+We assume some basic awareness of analysis of UNIX and molecular biology.
 
-## Requirements
-- Basic knowledge of molecular biology
-- Basic knowledge of UNIX
-
-## Learning outcomes
+## Outcomes
 By completing this course, you will:
 
 - Understand the basics of metagenomic sequencing and bioinformatic approaches to the analyis of metagenomic data
@@ -27,25 +29,30 @@ By completing this course, you will:
 - Be able to choose the right tools and approaches to answer your specific research question
 - Have confidence to learn new methods needed to answer your research question
 
-## Program overview
+## General information
+- The course will take place in Zoom (link by e-mail) from **9 AM to 4 PM (CET)**
+- Something about Amazon Cloud?
 
-### Monday
+
+## Program
+
+### Monday 19.04
 - High-throughput sequencing technologies
 - Repositories for high throughput sequencing data
 - Data download
 - QC and trimming
 
-### Tuesday
+### Tuesday 20.04
 - Taxonomic annotation of metagenomes
 - Functional annotation of metagenomes
 
-### Wednesday
+### Wednesday 21.04
 - Metagenome assembly
 - Hybrid assembly
 - Assembly QC
 
-### Thursday
+### Thursday 22.04
 - Genome-resolved metagenomics (Anvi'o)
 
-### Friday
+### Friday 23.04
 - Annotation of MAGs

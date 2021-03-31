@@ -34,7 +34,7 @@ git clone https://github.com/karkman/physalia_metagenomics
 - Run Cutadapt
 
 ```bash
-bash physalia_metagenomics/SCRIPTS/CUTADAPT.sh
+bash physalia_metagenomics/Scripts/CUTADAPT.sh
 ```
 
 **Alternatively, they will get the scripts from GitHub and type/copy+paste directly in the terminal?**
@@ -54,5 +54,7 @@ screen -S megan
 - Run
 
 ```bash
-bash physalia_metagenomics/SCRIPTS/MEGAN.sh
+bash physalia_metagenomics/Scripts/MEGAN.sh
 ```
+
+- Close the screen with Ctrl+a+d

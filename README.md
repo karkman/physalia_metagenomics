@@ -34,8 +34,8 @@ By completing this course, you will:
 ### Monday 19.04
 [Click here](Day1/README.md)
 
-- Introduction to metagenomics
 - Course outline and practical info
+- Introduction to metagenomics
 - Working with the command line
 - QC and trimming
 

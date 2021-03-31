@@ -6,6 +6,7 @@
 | Morning   | Course outline and practical info | [Link here](course-outline.pptx)                |                                             |
 | Morning   | Working with the command line     | [Link here](working-with-the-command-line.pptx) | [Link here](#working-with-the-command-line) |
 | Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pptx)               | [Link here](#qc-and-trimming)               |
+| Afternoon | Launching the read-based analyses |                                                 | [Link here](#read-based-analyses)           |
 
 ## Working with the command line
 
@@ -13,3 +14,5 @@
 - Link to a coursera/codeacademy course?
 
 ## QC and trimming
+
+## Read-based analyses

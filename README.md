@@ -42,8 +42,8 @@ By completing this course, you will:
 ### Tuesday 20.04
 [Click here](Day2/README.md)
 
-- Taxonomic annotation of metagenomes
-- Functional annotation of metagenomes
+- Read-based analyses
+- ???
 
 ### Wednesday 21.04
 - Metagenome assembly

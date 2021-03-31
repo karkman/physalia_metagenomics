@@ -29,19 +29,14 @@ By completing this course, you will:
 - Be able to choose the right tools and approaches to answer your specific research question
 - Have confidence to learn new methods needed to answer your research question
 
-## General information
-- The course will take place in Zoom (link by e-mail) from **9 AM to 4 PM (CET)**
-- Something about Amazon Cloud?
-
-
 ## Program
 
 ### Monday 19.04
 [Click here](Day1/README.md)
 
-- High-throughput sequencing technologies
-- Repositories for high throughput sequencing data
-- Data download
+- Introduction to metagenomics
+- Course outline and practical info
+- Working with the command line
 - QC and trimming
 
 ### Tuesday 20.04

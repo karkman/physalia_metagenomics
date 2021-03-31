@@ -37,12 +37,16 @@ By completing this course, you will:
 ## Program
 
 ### Monday 19.04
+[Click here](Day1/README.md)
+
 - High-throughput sequencing technologies
 - Repositories for high throughput sequencing data
 - Data download
 - QC and trimming
 
 ### Tuesday 20.04
+[Click here](Day2/README.md)
+
 - Taxonomic annotation of metagenomes
 - Functional annotation of metagenomes
 

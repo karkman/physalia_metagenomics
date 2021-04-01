@@ -4,7 +4,7 @@ conda activate megan
 mkdir MEGAN
 
 for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
-  seqtk sample -s100 ../RAWDATA/$SAMPLE.NOVASEQ.R1.fastq.gz 2000000 > MEGAN/$SAMPLE.fastq
+  seqtk sample -s100 TRIMMED/$SAMPLE.NOVASEQ.R1.fastq.gz 2000000 > MEGAN/$SAMPLE.fastq
 
   diamond blastx --query MEGAN/$SAMPLE.fastq \
                  --db $DIAMONDDB/nr \

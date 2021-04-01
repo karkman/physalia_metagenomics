@@ -1,12 +1,12 @@
 # Day 1
 
-| Time      | Activity                          | Slides                                          | Hands-on                                    |
-|-----------|-----------------------------------|-------------------------------------------------|---------------------------------------------|
-| Morning   | Course outline and practical info | [Link here](course-outline.pptx)                |                                             |
-| Morning   | Introduction to metagenomics      | [Link here](introduction-to-metagenomics.pptx)  |                                             |
-| Morning   | Working with the command line     | [Link here](working-with-the-command-line.pptx) | [Link here](#working-with-the-command-line) |
-| Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pptx)               | [Link here](#qc-and-trimming)               |
-| Afternoon | Launching the read-based analyses |                                                 | [Link here](#read-based-analyses)           |
+| Time      | Activity                          | Slides                                         | Hands-on                                    |
+|-----------|-----------------------------------|------------------------------------------------|---------------------------------------------|
+| Morning   | Course outline and practical info | [Link here](course-outline.pptx)               |                                             |
+| Morning   | Introduction to metagenomics      | [Link here](introduction-to-metagenomics.pdf)  |                                             |
+| Morning   | Working with the command line     | [Link here](working-with-the-command-line.pdf) | [Link here](#working-with-the-command-line) |
+| Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pdf)               | [Link here](#qc-and-trimming)               |
+| Afternoon | Read-based analyses (Part 1)      | [Link here](read-based-analyses.pdf)           | [Link here](#read-based-analyses)           |
 
 ## Working with the command line
 

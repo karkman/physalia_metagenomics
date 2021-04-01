@@ -6,7 +6,7 @@
 | Morning   | Introduction to metagenomics      | [Link here](introduction-to-metagenomics.pdf)  |                                             |
 | Morning   | Working with the command line     | [Link here](working-with-the-command-line.pdf) | [Link here](#working-with-the-command-line) |
 | Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pdf)               | [Link here](#qc-and-trimming)               |
-| Afternoon | Read-based analyses (Part 1)      | [Link here](read-based-analyses.pdf)           | [Link here](#read-based-analyses)           |
+| Afternoon | Read-based analyses (Part 1)      | [Link here](read-based-analyses-1.pdf)         | [Link here](#read-based-analyses)           |
 
 ## Working with the command line
 
@@ -42,7 +42,7 @@ bash physalia_metagenomics/Scripts/CUTADAPT.sh
 
 ## Read-based analyses
 
-We will launch the read-based analyses now so it is finished in time for tomorrow morning.  
+We will launch the scripts for the read-based analyses now so that everything is finished in time for tomorrow morning.  
 
 - Connect to the server
 - Open a "screen" so you can leave things running overnight

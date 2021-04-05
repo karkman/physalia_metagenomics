@@ -51,7 +51,7 @@ We will launch the scripts for the read-based analyses now so that everything is
 - Open a "screen" so you can leave things running overnight:
 
 ```bash
-screen -S megan
+screen -S read_based
 ```
 
 - Take a look at the script using less:
@@ -61,7 +61,7 @@ less physalia_metagenomics/Scripts/MEGAN.sh
 
 # #!/bin/bash
 # conda activate read_based_env
-# 
+#
 # mkdir READ_BASED
 #
 # for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
@@ -86,4 +86,4 @@ less physalia_metagenomics/Scripts/MEGAN.sh
 bash physalia_metagenomics/Scripts/MEGAN.sh
 ```
 
-- Close the screen with Ctrl+a+d
+- Close the screen by pressing **Ctrl+a+d**

@@ -38,12 +38,12 @@ By completing this course, you will:
 - Introduction to metagenomics
 - Working with the command line
 - QC and trimming
+- Read-based analyses (Part 1)
 
 ### Tuesday 20.04
 [Click here](Day2/README.md)
 
-- Read-based analyses
-- ???
+- Read-based analyses (Parts 2 and 3)
 
 ### Wednesday 21.04
 - Metagenome assembly

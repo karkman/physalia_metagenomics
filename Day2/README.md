@@ -7,19 +7,23 @@
 
 ## Read-based analyses
 
-Launch METAXA:
+First let's re-open the "screen" from yesterday and see if our script has finished running.
 
 - Connect to the server
 - Re-open the "screen" from yesterday
 
 ```bash
-screen -r megan
+screen -r read_based
 ```
 
-- Run METAXA
+Is the script still running? How can you tell?  
+If the script hasn't finished yet:
+- Stop it by pressing **Ctrl+c**
+- Copy the results from the course main folder to your folder:
 
 ```bash
-bash physalia_metagenomics/Scripts/METAXA.sh
+cp -r ../MEGAN .
+cp -r ../METAXA .
 ```
 
-- Close the screen with Ctrl+a+d
+- At this point we can close the screen permanently by typping **exit**.  

@@ -12,7 +12,7 @@
 
 Most of our activities will be done using the Unix command line (aka Unix shell).  
 It is thus highly recommend to have at least a basic grasp of how to get around in the Unix shell.  
-We will now dedicate one hour or so to follow an online tutorial to learn (or refresh) the basics of the Unix shell.
+We will now dedicate one hour or so to follow an online tutorial to learn (or refresh) the basics of the Unix shell.  
 Click [here](https://www.codecademy.com/learn/learn-the-command-line) to go the Codeacademy course "Learn the command line".
 
 ## QC and trimming

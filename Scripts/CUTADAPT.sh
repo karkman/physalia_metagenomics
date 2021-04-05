@@ -1,5 +1,5 @@
 #!/bin/bash
-conda activate cutadapt
+conda activate QC_env
 
 mkdir TRIMMED
 

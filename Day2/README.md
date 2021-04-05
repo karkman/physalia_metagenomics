@@ -17,14 +17,25 @@ screen -r read_based
 ```
 
 Is the script still running? How can you tell?  
-  
+
 If the script hasn't finished yet:
 - Stop it by pressing **Ctrl+c**
-- Copy the results from the course main folder to your folder:
+- At this point we can close the screen permanently by typping **exit**.  
+
+### MEGAN
+
+Let's take a look at the folder MEGAN **in the course main folder**:
 
 ```bash
-cp -r ../MEGAN .
-cp -r ../METAXA .
+ls MEGAN
 ```
 
-- At this point we can close the screen permanently by typping **exit**.  
+For each sample, you will find:
+- $SAMPLE.blastx.txt: DIAMOND output
+- $SAMPLE.diamond.log.txt: DIAMOND log
+- $SAMPLE.rma6: MEGAN output
+- $SAMPLE.megan.log.txt: MEGAN log
+
+Now let's copy the .rma6 files to our own computers using FileZilla.
+
+### METAXA

@@ -57,33 +57,47 @@ screen -S read_based
 - Take a look at the script using less:
 
 ```bash
-less physalia_metagenomics/Scripts/MEGAN.sh
+less physalia_metagenomics/Scripts/READ_BASED.sh
 
 # #!/bin/bash
 # conda activate read_based_env
 #
-# mkdir READ_BASED
+# mkdir RESAMPLED
+# mkdir MEGAN
+# mkdir METAXA
 #
 # for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
-#   seqtk sample -s100 TRIMMED/$SAMPLE.NOVASEQ.R1.fastq.gz 2000000 > READ_BASED/$SAMPLE.fastq
+#   seqtk sample -s100 TRIMMED/$SAMPLE.NOVASEQ.R1.fastq.gz 2000000 > RESAMPLED/$SAMPLE.R1.fastq
+#   seqtk sample -s100 TRIMMED/$SAMPLE.NOVASEQ.R2.fastq.gz 2000000 > RESAMPLED/$SAMPLE.R2.fastq
 #
-#   diamond blastx --query READ_BASED/$SAMPLE.fastq \
+#   diamond blastx --query RESAMPLED/$SAMPLE.R1.fastq \
+#                  --out MEGAN/$SAMPLE.blastx.txt \
 #                  --db ../DBs/nr \
-#                  --out READ_BASED/$SAMPLE.txt \
 #                  --outfmt 0 \
-#                  --threads 4 &> READ_BASED/$SAMPLE.diamond.log.txt
+#                  --threads 4 &> MEGAN/$SAMPLE.diamond.log.txt
 #
-#   ../megan/tools/blast2rma --in READ_BASED/$SAMPLE.txt \
-#                            --out READ_BASED/$SAMPLE.rma6 \
+#   ../megan/tools/blast2rma --in MEGAN/$SAMPLE.blastx.txt \
+#                            --out MEGAN/$SAMPLE.rma6 \
 #                            --mapDB ../DBs/megan-map-Jan2021.db \
 #                            --format BlastText \
-#                            --threads 4 &> READ_BASED/$SAMPLE.megan.log.txt
+#                            --threads 4 &> MEGAN/$SAMPLE.megan.log.txt
+#
+#   metaxa2 -1 RESAMPLED/$SAMPLE.R1.fastq \
+#           -2 RESAMPLED/$SAMPLE.R2.fastq \
+#           -o METAXA/$SAMPLE \
+#           --align none \
+#           --graphical F \
+#           --cpu 4 \
+#           --plus &> METAXA/$SAMPLE.metaxa.log.txt
+#
+#   metaxa2_ttt -i METAXA/$SAMPLE.taxonomy.txt \
+#               -o METAXA/$SAMPLE &>> METAXA/$SAMPLE.metaxa.log.txt
 # done
 ```
 
 - Run the script:
 ```bash
-bash physalia_metagenomics/Scripts/MEGAN.sh
+bash physalia_metagenomics/Scripts/READ_BASED.sh
 ```
 
 - Close the screen by pressing **Ctrl+a+d**

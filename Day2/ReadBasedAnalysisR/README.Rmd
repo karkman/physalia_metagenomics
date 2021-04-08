@@ -1,8 +1,6 @@
 ---
 title: "Read based analysis in R"
-subtitle: "Physalia Courses - Environmental Metagenomics"
 author: "Igor Pessi & Antti Karkman"
-date: "20.4.2021"
 output: 
   github_document:
     toc: true
@@ -136,13 +134,13 @@ res_table = cbind(as(res_table, "data.frame"), as(tax_table(megan_COG)[rownames(
 
 res_table[order(res_table$log2FoldChange),]  %>%
   filter(log2FoldChange<0) %>%
-  head(10) %>% 
+  head(5) %>% 
   janitor::clean_names() %>%
   knitr::kable(digits=2)
 
 res_table[order(res_table$log2FoldChange),]  %>% 
   filter(log2FoldChange>0) %>%
-  tail(10) %>%  
+  tail(5) %>%  
   janitor::clean_names() %>%
   knitr::kable(digits=2)
 ```
@@ -160,13 +158,13 @@ res_table = cbind(as(res_table, "data.frame"), as(tax_table(megan_SEED)[rownames
 
 res_table[order(res_table$log2FoldChange),]  %>% 
   filter(log2FoldChange<0) %>%
-  head(10) %>%  
+  head(5) %>%  
   janitor::clean_names() %>%
   knitr::kable(digits=2)
 
 res_table[order(res_table$log2FoldChange),]  %>% 
   filter(log2FoldChange>0) %>%
-  tail(10) %>%  
+  tail(5) %>%  
   janitor::clean_names() %>%
   knitr::kable(digits=2)
 ```

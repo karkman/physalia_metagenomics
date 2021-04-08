@@ -5,4 +5,3 @@ channels:
 dependencies:
   - seqtk=1.3
   - metaxa=2.2
-  - megan=6.21.2

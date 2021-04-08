@@ -1,0 +1,5 @@
+	Type
+Sample01	Bog
+Sample02	Fen
+Sample03	Fen
+Sample04	Bog

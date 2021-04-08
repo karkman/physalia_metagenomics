@@ -1,0 +1,172 @@
+---
+title: "Read based analysis in R"
+subtitle: "Physalia Courses - Environmental Metagenomics"
+author: "Igor Pessi & Antti Karkman"
+date: "20.4.2021"
+output: 
+  github_document:
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, fig.width=8, fig.height=6)
+#library(printr)
+```
+
+## Libraries and metadata
+
+First we need to load packages to R. These include `tidyverse` for data wrangling, `phyloseq` for easy storage of data and `vegan` for different community analyses.   
+```{r}
+library(tidyverse)
+library(phyloseq)
+library(vegan)
+library(DESeq2)
+metadata <- read.table("metadata.txt", sep="\t", row.names=1, header=TRUE)
+```
+
+## METAXA2
+
+### Data import 
+```{r}
+metaxa6 <- read.table("metaxa_genus.txt", sep="\t", header=TRUE, row.names=1)
+TAX <- data.frame(Taxa=row.names(metaxa6))
+TAX <- TAX %>% separate(Taxa, into=c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus"), sep=";")
+
+row.names(metaxa6) <- paste0("ASV", seq(nrow(metaxa6)))
+row.names(TAX) <- paste0("ASV", seq(nrow(TAX)))
+
+OTU <- otu_table(metaxa6, taxa_are_rows=TRUE)
+metaxa_genus <- phyloseq(OTU, tax_table(as.matrix(TAX)), sample_data(metadata))
+```
+### Data exploration
+
+```{r}
+metaxa_genus
+
+head(otu_table(metaxa_genus))
+head(tax_table(metaxa_genus))
+sample_data(metaxa_genus)
+```
+
+### Alpha-diversity
+```{r}
+shannon <- diversity(t(otu_table(metaxa_genus)), index="shannon")
+barplot(shannon, ylab="Shannon diversity")
+observed <- specnumber(t(otu_table(metaxa_genus)))
+barplot(observed, ylab="Observed taxa")
+```
+
+### Beta-diversity
+```{r}
+dist_mat <- vegdist(t(otu_table(metaxa_genus)))
+ord <- cmdscale(dist_mat)
+df <- data.frame(ord, Type=sample_data(metaxa_genus)$Type)
+
+ggplot(df, aes(x=X1, y=X2, color=Type)) +
+  geom_point(size=3) + 
+  scale_color_manual(values=c("firebrick", "royalblue")) +
+  theme_classic() + labs(x="Axis-1", y="Axis-2") + 
+  geom_text(label=row.names(df), nudge_y=0.03) + theme(legend.position="bottom")
+```
+
+### Differential abundance analysis
+
+```{r}
+tmp <- subset_taxa(metaxa_genus, Kingdom!="Eukaryota")
+deseq_genus = phyloseq_to_deseq2(tmp, ~ Type)
+deseq_genus = DESeq(deseq_genus, test="Wald", fitType="local")
+
+res = results(deseq_genus, cooksCutoff = FALSE)
+alpha = 0.01
+res_table = res[which(res$padj < alpha), ]
+res_table = cbind(as(res_table, "data.frame"), as(tax_table(tmp)[rownames(res_table), ], "matrix"))
+
+res_table[order(res_table$log2FoldChange),] %>%
+    knitr::kable(digits=2, caption = "Differentially abundant taxa: Bog vs. Fen")
+```
+
+## MEGAN
+
+### Data Import 
+
+```{r}
+#megan_comm <- import_biom("Comparison-Taxonomy.biom")
+#sample_data(megan_comm) <- sample_data(metadata)
+
+megan_COG <- import_biom("MEGAN_EGGNOG.biom")
+sample_data(megan_COG) <- sample_data(metadata)
+megan_SEED <- import_biom("MEGAN_SEED.biom")
+sample_data(megan_SEED) <- sample_data(metadata)
+```
+
+### Diversity indices
+```{r}
+shannon <- diversity(t(otu_table(megan_COG)), index="shannon")
+barplot(shannon, ylab="Shannon diversity")
+shannon <- diversity(t(otu_table(megan_SEED)), index="shannon")
+barplot(shannon, ylab="Shannon diversity")
+```
+
+### Ordination plots
+```{r}
+dist_mat <- vegdist(t(otu_table(megan_COG)))
+ord <- cmdscale(dist_mat)
+df <- data.frame(ord, Type=sample_data(metaxa_genus)$Type)
+
+ggplot(df, aes(x=X1, y=X2, color=Type)) +
+  geom_point(size=3) + 
+  scale_color_manual(values=c("firebrick", "royalblue")) +
+  theme_classic() + labs(x="Axis-1", y="Axis-2") + 
+  geom_text(label=row.names(df), nudge_y=0.01) + theme(legend.position="bottom")
+```
+
+### Differential abundance analysis
+
+__COG categories__  
+
+```{r}
+deseq_COG = phyloseq_to_deseq2(megan_COG, ~ Type)
+deseq_COG = DESeq(deseq_COG, test="Wald", fitType="local")
+
+res = results(deseq_COG, cooksCutoff = FALSE)
+alpha = 0.01
+res_table = res[which(res$padj < alpha), ]
+res_table = cbind(as(res_table, "data.frame"), as(tax_table(megan_COG)[rownames(res_table), ], "matrix"))
+
+res_table[order(res_table$log2FoldChange),]  %>%
+  filter(log2FoldChange<0) %>%
+  head(10) %>% 
+  janitor::clean_names() %>%
+  knitr::kable(digits=2)
+
+res_table[order(res_table$log2FoldChange),]  %>% 
+  filter(log2FoldChange>0) %>%
+  tail(10) %>%  
+  janitor::clean_names() %>%
+  knitr::kable(digits=2)
+```
+
+__SEED categories__  
+
+```{r}
+deseq_SEED = phyloseq_to_deseq2(megan_SEED, ~ Type)
+deseq_SEED = DESeq(deseq_SEED, test="Wald", fitType="local")
+
+res = results(deseq_SEED, cooksCutoff = FALSE)
+alpha = 0.01
+res_table = res[which(res$padj < alpha), ]
+res_table = cbind(as(res_table, "data.frame"), as(tax_table(megan_SEED)[rownames(res_table), ], "matrix"))
+
+res_table[order(res_table$log2FoldChange),]  %>% 
+  filter(log2FoldChange<0) %>%
+  head(10) %>%  
+  janitor::clean_names() %>%
+  knitr::kable(digits=2)
+
+res_table[order(res_table$log2FoldChange),]  %>% 
+  filter(log2FoldChange>0) %>%
+  tail(10) %>%  
+  janitor::clean_names() %>%
+  knitr::kable(digits=2)
+```

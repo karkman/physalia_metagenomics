@@ -15,25 +15,62 @@ It is thus highly recommend to have at least a basic grasp of how to get around 
 We will now dedicate one hour or so to follow an online tutorial to learn (or refresh) the basics of the Unix shell.  
 Click [here](https://www.codecademy.com/learn/learn-the-command-line) to go the Codeacademy course "Learn the command line".
 
+## Set-up
+
+### Github repository
+
+All course material can be found from the course [Github repository](https://github.com/karkman/physalia_metagenomics).
+You can follow it through the website, but you can also copy it to your own computer. 
+
+```
+cd /PATH/WHERE/YOU/WANT/THE/FOLDER
+git clone https://github.com/karkman/physalia_metagenomics.git
+```
+
+We might update thei repository during the course. To get the latest updates, pull the changes from Github.  
+
+```bash
+git pull origin main
+```
+
+### Connecting to the server
+
+For most of the analyses we will use Amazon cloud computing.  
+The address will change every day and we will provide it each day. Your username will be the same for the whole course. 
+Use `ssh` or any other ssh client to connect to the server.
+
+```bash
+ssh -i envmeta.pem USER@ip-address
+```
+
+When you have connecter to the server, you see your home folder. Copy the course repository also there.
+After copying the course folder, make a folder for the raw data. The raw data will be in stored only in one place (to save disk space) and you will only softlink them. 
+
+```bash
+cd raw_data
+ln -s PATH/TO/FILES/*fastq.gz .
+```
+
 ## QC and trimming
-
-**This is my idea on how things will go**
-
-- Connect to the server
-- Create a directory for you
+Now we should have softlinks to the data and can start the QC and trimming.   
+We will use `FastQC`and `MultiQC` for the QC and `cutadapt` for the trimming.  
+Go to the raw data folder and create a folder for the QC files.   
 
 ```bash
-mkdir $USER
-cd $USER
+cd raw_data
+mkdir FASTQC
 ```
-- Clone this repository (for scripts)
+
+Then we are ready to run QC omn the raw data. Most of the programs are preinstalled on the server in [conda](https://docs.conda.io/projects/conda/en/latest/index.html) virtual environemnts. You only need to activate the virtuasl enviroment. 
 
 ```bash
-git clone https://github.com/karkman/physalia_metagenomics
+conda activate QC_env
+fastqc *.fastq.gz -o FASTQC -t 4
+multiqc FASTQC/* -o FASTQC -n raw_QC
 ```
 
-- Raw data is already there in the server (folder RAWDATA)
-- Run Cutadapt
+After QC is finished, copy the multiqc report (`raw_QC.html`) to your local machine and open it with your favourite browser.  
+We will go thru the report together before doing any trimming.
 
 ```bash
 bash physalia_metagenomics/Scripts/CUTADAPT.sh

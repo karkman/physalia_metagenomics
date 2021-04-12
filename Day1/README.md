@@ -52,6 +52,7 @@ ln -s PATH/TO/FILES/*fastq.gz .
 ```
 
 ## QC and trimming
+
 Now we should have softlinks to the data and can start the QC and trimming.   
 We will use `FastQC`and `MultiQC` for the QC and `cutadapt` for the trimming.  
 Go to the raw data folder and create a folder for the QC files.   
@@ -60,8 +61,8 @@ Go to the raw data folder and create a folder for the QC files.
 cd raw_data
 mkdir FASTQC
 ```
-
-Then we are ready to run QC omn the raw data. Most of the programs are preinstalled on the server in [conda](https://docs.conda.io/projects/conda/en/latest/index.html) virtual environemnts. You only need to activate the virtuasl enviroment. 
+Most of the programs are preinstalled on the server in [conda](https://docs.conda.io/projects/conda/en/latest/index.html) virtual environemnts.  
+You only need to activate the virtual enviroment and you're ready to run QC on the raw data. 
 
 ```bash
 conda activate QC_env
@@ -72,11 +73,21 @@ multiqc FASTQC/* -o FASTQC -n raw_QC
 After QC is finished, copy the multiqc report (`raw_QC.html`) to your local machine and open it with your favourite browser.  
 We will go thru the report together before doing any trimming.
 
+The trimming script is provided and can be found from the `Scripts` folder. 
+Open the file with a text editor on the server. We wil go thru the different options together. Manual for cutadapt can be found from [here.](https://cutadapt.readthedocs.io/en/stable/index.html)
+
 ```bash
-bash physalia_metagenomics/Scripts/CUTADAPT.sh
+vim Scripts/CUTADAPT.sh
 ```
 
-**Alternatively, they will get the scripts from GitHub and type/copy+paste directly in the terminal?**
+Then run the trimming. 
+
+```bash
+bash Scripts/CUTADAPT.sh
+```
+
+After the trimming is done, run the QC steps for the trimmed sequence files in the `TRIMMED` folder.  
+And when it's done, open the MultiQC report on yor local machine. 
 
 
 ## Read-based analyses

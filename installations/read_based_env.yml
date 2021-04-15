@@ -5,3 +5,4 @@ channels:
 dependencies:
   - seqtk=1.3
   - metaxa=2.2
+  - diamond=2.0.9

@@ -2,7 +2,7 @@
 
 | Time      | Activity                          | Slides                                         | Hands-on                                    |
 |-----------|-----------------------------------|------------------------------------------------|---------------------------------------------|
-| Morning   | Course outline and practical info | [Link here](course-outline.pptx)               |                                             |
+| Morning   | Course outline and practical info | [Link here](course-outline.pdf)                |                                             |
 | Morning   | Introduction to metagenomics      | [Link here](introduction-to-metagenomics.pdf)  |                                             |
 | Morning   | Working with the command line     | [Link here](working-with-the-command-line.pdf) | [Link here](#working-with-the-command-line) |
 | Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pdf)               | [Link here](#qc-and-trimming)               |
@@ -20,7 +20,7 @@ Click [here](https://www.codecademy.com/learn/learn-the-command-line) to go the 
 ### Github repository
 
 All course material can be found from the course [Github repository](https://github.com/karkman/physalia_metagenomics).
-You can follow it through the website, but you can also copy it to your own computer. 
+You can follow it through the website, but you can also copy it to your own computer.
 
 ```
 cd /PATH/WHERE/YOU/WANT/THE/FOLDER
@@ -36,7 +36,7 @@ git pull origin main
 ### Connecting to the server
 
 For most of the analyses we will use Amazon cloud computing.  
-The address will change every day and we will provide it each day. Your username will be the same for the whole course. 
+The address will change every day and we will provide it each day. Your username will be the same for the whole course.
 Use `ssh` or any other ssh client to connect to the server.
 
 ```bash
@@ -44,7 +44,7 @@ ssh -i envmeta.pem USER@ip-address
 ```
 
 When you have connecter to the server, you see your home folder. Copy the course repository also there.
-After copying the course folder, make a folder for the raw data. The raw data will be in stored only in one place (to save disk space) and you will only softlink them. 
+After copying the course folder, make a folder for the raw data. The raw data will be in stored only in one place (to save disk space) and you will only softlink them.
 
 ```bash
 cd raw_data
@@ -62,7 +62,7 @@ cd raw_data
 mkdir FASTQC
 ```
 Most of the programs are preinstalled on the server in [conda](https://docs.conda.io/projects/conda/en/latest/index.html) virtual environemnts.  
-You only need to activate the virtual enviroment and you're ready to run QC on the raw data. 
+You only need to activate the virtual enviroment and you're ready to run QC on the raw data.
 
 ```bash
 conda activate QC_env
@@ -73,21 +73,21 @@ multiqc FASTQC/* -o FASTQC -n raw_QC
 After QC is finished, copy the multiqc report (`raw_QC.html`) to your local machine and open it with your favourite browser.  
 We will go thru the report together before doing any trimming.
 
-The trimming script is provided and can be found from the `Scripts` folder. 
+The trimming script is provided and can be found from the `Scripts` folder.
 Open the file with a text editor on the server. We wil go thru the different options together. Manual for cutadapt can be found from [here.](https://cutadapt.readthedocs.io/en/stable/index.html)
 
 ```bash
 vim Scripts/CUTADAPT.sh
 ```
 
-Then run the trimming. 
+Then run the trimming.
 
 ```bash
 bash Scripts/CUTADAPT.sh
 ```
 
 After the trimming is done, run the QC steps for the trimmed sequence files in the `TRIMMED` folder.  
-And when it's done, open the MultiQC report on yor local machine. 
+And when it's done, open the MultiQC report on yor local machine.
 
 
 ## Read-based analyses

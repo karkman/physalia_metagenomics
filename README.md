@@ -46,6 +46,8 @@ By completing this course, you will:
 - Read-based analyses (Parts 2 and 3)
 
 ### Wednesday 21.04
+[Click here](Day3/)
+
 - Metagenome assembly
 - Hybrid assembly
 - Assembly QC

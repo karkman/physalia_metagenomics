@@ -5,7 +5,7 @@
 | Morning   | Course outline and practical info | [Link here](course-outline.pdf)                       |                                             |
 | Morning   | Introduction to metagenomics      | [Link here](introduction-to-metagenomics.pdf)         |                                             |
 | Morning   | Working with the command line     | [Link here](working-with-the-command-line.pdf)        | [Link here](#working-with-the-command-line) |
-| Afternoon | Setting up the Amazon Cloud       | [Link here](connecting-to-the-amazon-EC2-service.pdf) | [Link here](#setting-up-the-amazon-cloud)   |
+| Afternoon | Setting up the Amazon Cloud       |                                                       | [Link here](#setting-up-the-amazon-cloud)   |
 | Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pdf)                      | [Link here](#qc-and-trimming)               |
 | Afternoon | Read-based analyses (Part 1)      | [Link here](read-based-analyses-1.pdf)                | [Link here](#read-based-analyses)           |
 
@@ -23,7 +23,8 @@ Click [here](https://www.codecademy.com/learn/learn-the-command-line) to go the 
 For most of the analyses we will use the Amazon cloud services.  
 The IP address of the Amazon cloud instance will change every day, we will provide it to you at the start of the activities.   
 Your username - that you have received by e-mail - will be the same for the whole course.  
-More information on how to connect to the Amazon cloud instance has been sent to you by e-mail (also [here](connecting-to-the-amazon-EC2-service.pdf)).
+The list of usernames can be found in Slack (#before-start).  
+More information on how to connect to the Amazon cloud instance also in Slack (#before-start), but also [here](connecting-to-the-amazon-EC2-service.pdf).
 
 ### Copying the course's GitHub repository
 Once you have connected to the server, you will see your home folder.  

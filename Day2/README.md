@@ -60,3 +60,22 @@ First let's copy the `.rma6` files to your own computers using FileZilla.
 When that's done let's launch `MEGAN`.  
 
 ## Read-based analyses (Part 3)
+
+We will now continue the read-based analyses in R.  
+We need some external packages for the analyses, including:
+
+- `tidyverse` for data wrangling (includes `ggplot2` for plotting)
+- `phyloseq` for easy storage and manipulation of ’omics data
+- `vegan` for diversity analyses
+- `DESeq2` for differential abundance analysis
+- `patchwork` for plot layouts
+
+Let's start RStudio and load these packages:
+
+``` r
+library(tidyverse)
+library(phyloseq)
+library(vegan)
+library(DESeq2)
+library(patchwork)
+```

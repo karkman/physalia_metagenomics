@@ -49,10 +49,10 @@ ls MEGAN
 ```
 
 For each sample, you should find:
-- $SAMPLE.blastx.txt: DIAMOND output
-- $SAMPLE.diamond.log.txt: DIAMOND log
-- $SAMPLE.rma6: MEGAN output
-- $SAMPLE.megan.log.txt: MEGAN log
+- `$SAMPLE.blastx.txt`: DIAMOND output
+- `$SAMPLE.diamond.log.txt`: DIAMOND log
+- `$SAMPLE.rma6`: MEGAN output
+- `$SAMPLE.megan.log.txt`: MEGAN log
 
 The `.rma6` files were created by `MEGAN` and contain taxonomic and functional information based on the `DIAMOND` annotation against the NCBI nr database.  
 We can open these files in the GUI version of `MEGAN` that you have installed in your own computer.  
@@ -70,7 +70,8 @@ We need some external packages for the analyses, including:
 - `DESeq2` for differential abundance analysis
 - `patchwork` for plot layouts
 
-Let's start RStudio and load these packages:
+First download the `READ_BASED_R` folder that is inside the `Share` folder to your own computer using FileZilla.  
+Then let's start RStudio and load the necessary packages:
 
 ``` r
 library(tidyverse)

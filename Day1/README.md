@@ -117,26 +117,22 @@ vim Scripts/PORECHOP.sh
 We wil go through the different options together.  
 But you can take a look at the manual for `Cutadapt` [here](https://cutadapt.readthedocs.io/en/stable/index.html), and for `Porechop` [here](https://github.com/rrwick/Porechop).  
 
-Now let's launch the trimming scripts, first `Cutadapt`:
+Now let's launch the trimming scripts, one at a time:
 
 ```bash
 bash Scripts/CUTADAPT.sh
-```
-
-And when that's done, `Porechop`:
-
-```bash
 bash Scripts/PORECHOP.sh
 ```
 
-These will take a while and it's very likely that the jobs won't finish in time.  
+These will actually take a while and it's very likely that the jobs won't finish in time.  
+So let's stop the script by hitting **ctrl+c**.
 Luckily, we have a copy of the trimmed data in the `Share` folder, so let's again create softlinks:
 
 ```bash
 ln -sf ../Share/TRIMMED/* TRIMMED
 ```
 
-Because we used redirection (`>`) to capture the output log of `Cutadapt` and `Porechop`, this information is now stored in a file.  
+Because we used redirection (`>`) to capture the output (`stdout`) of `Cutadapt` and `Porechop`, this information is now stored in a file.  
 Let's take a look at the `Cutadapt` log for Sample01 using `less`:
 
 ```bash

@@ -32,38 +32,31 @@ Now let's run the script:
 bash Scripts/READ_BASED.sh
 ```
 
+## Read-based analyses (Part 2)
 
-## Read-based analyses
-
-First let's re-open the "screen" from yesterday and see if our script has finished running.
-
-- Connect to the server
-- Re-open the "screen" from yesterday:
+Again, because we are using real data, some steps are quite intensive and require some time to be completed.  
+Let's stop the script by hitting **ctrl+c** and make a softlink to the output that is found in the `Share` folder:  
 
 ```bash
-screen -r read_based
+ln -sf ../Share/MEGAN/* MEGAN
+ln -sf ../Share/METAXA/* METAXA
 ```
 
-Is the script still running? How can you tell?  
-
-If the script hasn't finished yet:
-- Stop it by pressing **Ctrl+c**
-- At this point we can close the screen permanently by typping **exit**.  
-
-### MEGAN
-
-Let's take a look at the folder MEGAN **in the course main folder**:
+Let's take a look at the folder `MEGAN`:
 
 ```bash
 ls MEGAN
 ```
 
-For each sample, you will find:
+For each sample, you should find:
 - $SAMPLE.blastx.txt: DIAMOND output
 - $SAMPLE.diamond.log.txt: DIAMOND log
 - $SAMPLE.rma6: MEGAN output
 - $SAMPLE.megan.log.txt: MEGAN log
 
-Now let's copy the .rma6 files to our own computers using FileZilla.
+The `.rma6` files were created by `MEGAN` and contain taxonomic and functional information based on the `DIAMOND` annotation against the NCBI nr database.  
+We can open these files in the GUI version of `MEGAN` that you have installed in your own computer.  
+First let's copy the `.rma6` files to your own computers using FileZilla.  
+When that's done let's launch `MEGAN`.  
 
-### METAXA
+## Read-based analyses (Part 3)

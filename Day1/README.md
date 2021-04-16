@@ -82,7 +82,7 @@ This step only has to be run once.
 ## QC and trimming
 
 Now we should have softlinks to the raw data and can start the QC and trimming.   
-We will use `FastQC`and `MultiQC` for the QC and `Cutadapt` for the trimming.  
+We will use `FastQC`and `MultiQC` for the QC, `Cutadapt` for the trimming of Illumina data and `Porechop` for the trimming of Nanopore data.  
 Go to the raw data folder, create a folder for the QC files and activate the virtual environment:
 
 ```bash
@@ -100,21 +100,34 @@ multiqc FASTQC/* -o FASTQC -n multiqc.html
 After QC is finished, copy the MultiQC report (`multiqc.html`) to your local machine using FileZilla and open it with your favourite browser.  
 We will go through the report together before doing any trimming.  
 
-The trimming script is provided and can be found from the `Scripts` folder.  
+The trimming scripts are provided and can be found from the `Scripts` folder.  
 First move out of the `RAWDATA` folder using `cd ..`.  
-Then open the script file with a text editor on the server using `vim`:
+Then open the scripts file with a text editor on the server using `vim`:
 
 ```bash
 vim Scripts/CUTADAPT.sh
 ```
 
-We wil go through the different options together.  
-But you can take a look at the manual for Cutadapt [here](https://cutadapt.readthedocs.io/en/stable/index.html).  
+To quit `vim` type `:q` and press Enter.  
+And now the Porechop script:
 
-Now let's launch the trimming script:
+```bash
+vim Scripts/PORECHOP.sh
+```
+
+We wil go through the different options together.  
+But you can take a look at the manual for Cutadapt [here](https://cutadapt.readthedocs.io/en/stable/index.html), and for Porechop [here](https://github.com/rrwick/Porechop).  
+
+Now let's launch the trimming scripts, first Cutadapt:
 
 ```bash
 bash Scripts/CUTADAPT.sh
+```
+
+And when that's done, Porechop:
+
+```bash
+bash Scripts/PORECHOP.sh
 ```
 
 After the trimming is done, run the QC steps (`FastQC` and `MultiQC`) for the trimmed sequence files in the `TRIMMED` folder.  

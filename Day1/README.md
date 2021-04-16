@@ -96,12 +96,12 @@ fastqc *.fastq.gz -o FASTQC -t 4
 multiqc FASTQC/* -o FASTQC -n multiqc.html
 ```
 
-After QC is finished, copy the MultiQC report (`multiqc.html`) to your local machine using FileZilla and open it with your favourite browser.  
+After QC is finished, copy the `MultiQC` report (`multiqc.html`) to your local machine using FileZilla and open it with your favourite browser.  
 We will go through the report together before doing any trimming.  
 
 The trimming scripts are provided and can be found from the `Scripts` folder.  
 First move out of the `RAWDATA` folder using `cd ..`.  
-Then open the scripts file with a text editor on the server using `vim`:
+Then open the script file on the server using `vim`:
 
 ```bash
 vim Scripts/CUTADAPT.sh
@@ -115,20 +115,43 @@ vim Scripts/PORECHOP.sh
 ```
 
 We wil go through the different options together.  
-But you can take a look at the manual for Cutadapt [here](https://cutadapt.readthedocs.io/en/stable/index.html), and for Porechop [here](https://github.com/rrwick/Porechop).  
+But you can take a look at the manual for `Cutadapt` [here](https://cutadapt.readthedocs.io/en/stable/index.html), and for `Porechop` [here](https://github.com/rrwick/Porechop).  
 
-Now let's launch the trimming scripts, first Cutadapt:
+Now let's launch the trimming scripts, first `Cutadapt`:
 
 ```bash
 bash Scripts/CUTADAPT.sh
 ```
 
-And when that's done, Porechop:
+And when that's done, `Porechop`:
 
 ```bash
 bash Scripts/PORECHOP.sh
 ```
 
-After the trimming is done, run the QC steps (`FastQC` and `MultiQC`) for the trimmed sequence files in the `TRIMMED` folder.  
-**Remember to create the `FASTQC` folder**.  
-And when it's done, copy the MultiQC report to yor local machine using FileZilla and open it with a browser.
+These will take a while and it's very likely that the jobs won't finish in time.  
+Luckily, we have a copy of the trimmed data in the `Share` folder, so let's again create softlinks:
+
+```bash
+ln -sf ../Share/TRIMMED/* TRIMMED
+```
+
+Because we used redirection (`>`) to capture the output log of `CUTADAPT` and `PORECHOP`, this information is now stored in a file.  
+Let's take a look at the `Cutadapt` log for Sample01 using `less`:
+
+```bash
+less TRIMMED/Sample01.cutadapt.log.txt
+```
+
+**NOTE:** You can scroll up and down using the arrow keys on your keyboard, or move one "page" at a time using the spacebar.  
+By looking at the `Cutadapt` log, can you answer:
+
+- How many read pairs we had originally?
+- How many reads contained adapters?
+- How many read pairs were removed because they were too short?
+- How many base calls were quality-trimmed?
+- Overall, what is the percentage of base pairs that were kept?
+
+We can also take a look at how the trimmed data looks overall by running the QC steps (`FastQC` and `MultiQC`) again.  
+So let's run `FastQC` and `MultiQC` again for the trimmed data (**Remember** to `cd` to the `TRIMMED` folder and create the `FASTQC` folder).  
+When that is done, copy the `MultiQC` report to yor local machine using FileZilla and open it with a browser.

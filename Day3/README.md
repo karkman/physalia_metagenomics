@@ -2,27 +2,22 @@
 
 | Time      | Activity                      | Slides                                 | Hands-on                          |
 |-----------|-------------------------------|----------------------------------------|-----------------------------------|
-| Morning   | Read-based analyses (Part 2)  | [Link here](read-based-analyses-2.pdf) | [Link here](#read-based-analyses) |
-| Afternoon | Read-based analyses (Part 3)  |                                        | [Link here](#read-based-analyses) |
+| Morning   | Assembly of metagenomes       | [Link here](read-based-analyses-2.pdf) | [Link here](#metagenome-assembly) |
+| Afternoon | Assembly QC                   |                                        | [Link here](#assembly-qc)         |
 
-## Read-based analyses
+## Metagenome assembly
 
-First let's re-open the "screen" from yesterday and see if our script has finished running.
+Log in to AWS with the IP provided.
 
-- Connect to the server
-- Re-open the "screen" from yesterday:
+First thing to do is to pull all possible cvhanges in the Github repository
 
 ```bash
-screen -r read_based
+cd physalia_metagenomics
+git pull origin main
 ```
 
-Is the script still running? How can you tell?  
 
-If the script hasn't finished yet:
-- Stop it by pressing **Ctrl+c**
-- At this point we can close the screen permanently by typping **exit**.  
-
-### MEGAN
+### Assembly QC
 
 Let's take a look at the folder MEGAN **in the course main folder**:
 
@@ -37,5 +32,3 @@ For each sample, you will find:
 - $SAMPLE.megan.log.txt: MEGAN log
 
 Now let's copy the .rma6 files to our own computers using FileZilla.
-
-### METAXA

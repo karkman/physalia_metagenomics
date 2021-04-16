@@ -7,7 +7,6 @@
 | Morning   | Working with the command line     | [Link here](working-with-the-command-line.pdf)        | [Link here](#working-with-the-command-line) |
 | Afternoon | Setting up the Amazon Cloud       |                                                       | [Link here](#setting-up-the-amazon-cloud)   |
 | Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pdf)                      | [Link here](#qc-and-trimming)               |
-| Afternoon | Read-based analyses (Part 1)      | [Link here](read-based-analyses-1.pdf)                | [Link here](#read-based-analyses)           |
 
 ## Working with the command line
 
@@ -133,64 +132,3 @@ bash Scripts/PORECHOP.sh
 After the trimming is done, run the QC steps (`FastQC` and `MultiQC`) for the trimmed sequence files in the `TRIMMED` folder.  
 **Remember to create the `FASTQC` folder**.  
 And when it's done, copy the MultiQC report to yor local machine using FileZilla and open it with a browser.
-
-
-## Read-based analyses
-
-We will launch the scripts for the read-based analyses now so that everything is (hopefully) finished in time for tomorrow morning.  
-
-- Connect to the server
-- Go to your directory
-- Open a `screen` so you can leave things running overnight:
-
-```bash
-screen -S read_based
-```
-
-- Take a look at the script using `less`:
-
-```bash
-less physalia_metagenomics/Scripts/READ_BASED.sh
-
-# #!/bin/bash
-# conda activate read_based_env
-#
-# mkdir RESAMPLED
-# mkdir MEGAN
-# mkdir METAXA
-#
-# for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
-#   seqtk sample -s100 TRIMMED/$SAMPLE.NOVASEQ.R1.fastq.gz 2000000 > RESAMPLED/$SAMPLE.R1.fastq
-#   seqtk sample -s100 TRIMMED/$SAMPLE.NOVASEQ.R2.fastq.gz 2000000 > RESAMPLED/$SAMPLE.R2.fastq
-#
-#   diamond blastx --query RESAMPLED/$SAMPLE.R1.fastq \
-#                  --out MEGAN/$SAMPLE.blastx.txt \
-#                  --db ../DBs/nr \
-#                  --outfmt 0 \
-#                  --threads 4 &> MEGAN/$SAMPLE.diamond.log.txt
-#
-#   ../megan/tools/blast2rma --in MEGAN/$SAMPLE.blastx.txt \
-#                            --out MEGAN/$SAMPLE.rma6 \
-#                            --mapDB ../DBs/megan-map-Jan2021.db \
-#                            --format BlastText \
-#                            --threads 4 &> MEGAN/$SAMPLE.megan.log.txt
-#
-#   metaxa2 -1 RESAMPLED/$SAMPLE.R1.fastq \
-#           -2 RESAMPLED/$SAMPLE.R2.fastq \
-#           -o METAXA/$SAMPLE \
-#           --align none \
-#           --graphical F \
-#           --cpu 4 \
-#           --plus &> METAXA/$SAMPLE.metaxa.log.txt
-#
-#   metaxa2_ttt -i METAXA/$SAMPLE.taxonomy.txt \
-#               -o METAXA/$SAMPLE &>> METAXA/$SAMPLE.metaxa.log.txt
-# done
-```
-
-- Run the script:
-```bash
-bash physalia_metagenomics/Scripts/READ_BASED.sh
-```
-
-- Close the screen by pressing **Ctrl+a+d**

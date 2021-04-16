@@ -136,7 +136,7 @@ Luckily, we have a copy of the trimmed data in the `Share` folder, so let's agai
 ln -sf ../Share/TRIMMED/* TRIMMED
 ```
 
-Because we used redirection (`>`) to capture the output log of `CUTADAPT` and `PORECHOP`, this information is now stored in a file.  
+Because we used redirection (`>`) to capture the output log of `Cutadapt` and `Porechop`, this information is now stored in a file.  
 Let's take a look at the `Cutadapt` log for Sample01 using `less`:
 
 ```bash
@@ -153,5 +153,5 @@ By looking at the `Cutadapt` log, can you answer:
 - Overall, what is the percentage of base pairs that were kept?
 
 We can also take a look at how the trimmed data looks overall by running the QC steps (`FastQC` and `MultiQC`) again.  
-So let's run `FastQC` and `MultiQC` again for the trimmed data (**Remember** to `cd` to the `TRIMMED` folder and create the `FASTQC` folder).  
+So let's run `FastQC` and `MultiQC` again for the trimmed data (**remember** to `cd` to the `TRIMMED` folder and create the `FASTQC` folder).  
 When that is done, copy the `MultiQC` report to yor local machine using FileZilla and open it with a browser.

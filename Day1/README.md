@@ -144,6 +144,8 @@ less TRIMMED/Sample01.cutadapt.log.txt
 ```
 
 **NOTE:** You can scroll up and down using the arrow keys on your keyboard, or move one "page" at a time using the spacebar.  
+**NOTE:** To quit `less`, hit the letter **q**.  
+
 By looking at the `Cutadapt` log, can you answer:
 
 - How many read pairs we had originally?

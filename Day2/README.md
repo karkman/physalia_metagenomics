@@ -17,12 +17,13 @@ Let's take a look at the script using `less`:
 less Scripts/READ_BASED.sh
 ```
 
-You can scroll up and down with the arrow keys if the text do not fit entirely in your screen.  
-To quit `less`, hit the letter **q**.  
+**NOTE:** You can scroll up and down using the arrow keys on your keyboard, or move one "page" at a time using the spacebar.  
+**NOTE:** To quit `less`, hit the letter **q**.  
+
 As you will see, we are first running `seqtk` to subsample the data to an even number of sequences per sample (2,000,000).  
 Then we are running `DIAMOND` to annotate the reads against the NCBI nr database.  
-Then we will use `MEGAN` to parse the annotations and get taxonomical and functional assignments.  
-In addition to `DIAMOND` and `MEGAN`, we will also use a different approach to get taxonomical profiles using `METAXA`.  
+Then we will use `MEGAN` to parse the annotations and get taxonomic and functional assignments.  
+In addition to `DIAMOND` and `MEGAN`, we will also use a different approach to get taxonomic profiles using `METAXA`.  
 This will happen in two steps: the first command finds rRNA genes among our reads, and the second summarises the taxonomy.  
 
 Now let's run the script:
@@ -30,7 +31,6 @@ Now let's run the script:
 ```bash
 bash Scripts/READ_BASED.sh
 ```
-
 
 
 ## Read-based analyses

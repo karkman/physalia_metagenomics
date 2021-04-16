@@ -69,28 +69,32 @@ ln -s /home/ubuntu/Share/RAWDATA/* RAWDATA
 
 ## QC and trimming
 
-Now we should have softlinks to the data and can start the QC and trimming.   
-We will use `FastQC`and `MultiQC` for the QC and `cutadapt` for the trimming.  
-Go to the raw data folder and create a folder for the QC files.   
+Now we should have softlinks to the raw data and can start the QC and trimming.   
+We will use `FastQC`and `MultiQC` for the QC and `Cutadapt` for the trimming.  
+Go to the raw data folder and create a folder for the QC files:   
 
 ```bash
-cd raw_data
+cd RAWDATA
 mkdir FASTQC
 ```
-Most of the programs are preinstalled on the server in [conda](https://docs.conda.io/projects/conda/en/latest/index.html) virtual environemnts.  
+
+Most of the programs are pre-installed on the server using [conda](https://docs.conda.io/projects/conda/en/latest/index.html) virtual environemnts.  
 You only need to activate the virtual enviroment and you're ready to run QC on the raw data.
 
 ```bash
 conda activate QC_env
+
 fastqc *.fastq.gz -o FASTQC -t 4
 multiqc FASTQC/* -o FASTQC -n raw_QC
 ```
 
-After QC is finished, copy the multiqc report (`raw_QC.html`) to your local machine and open it with your favourite browser.  
-We will go thru the report together before doing any trimming.
+After QC is finished, copy the multiqc report (`raw_QC.html`) to your local machine using FileZilla and open it with your favourite browser.  
+We will go through the report together before doing any trimming.  
 
-The trimming script is provided and can be found from the `Scripts` folder.
-Open the file with a text editor on the server. We wil go thru the different options together. Manual for cutadapt can be found from [here.](https://cutadapt.readthedocs.io/en/stable/index.html)
+The trimming script is provided and can be found from the `Scripts` folder.  
+Open the file with a text editor on the server using `vim`.  
+We wil go thru the different options together.  
+The manual for Cutadapt can be found from [here](https://cutadapt.readthedocs.io/en/stable/index.html).
 
 ```bash
 vim Scripts/CUTADAPT.sh

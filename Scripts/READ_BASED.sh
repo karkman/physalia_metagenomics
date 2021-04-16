@@ -11,13 +11,13 @@ for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
 
   diamond blastx --query RESAMPLED/$SAMPLE.R1.fastq \
                  --out MEGAN/$SAMPLE.blastx.txt \
-                 --db ../DBs/nr \
+                 --db ../Share/DBs/nr \
                  --outfmt 0 \
                  --threads 4 &> MEGAN/$SAMPLE.diamond.log.txt
 
   ../megan/tools/blast2rma --in MEGAN/$SAMPLE.blastx.txt \
                            --out MEGAN/$SAMPLE.rma6 \
-                           --mapDB ../DBs/megan-map-Jan2021.db \
+                           --mapDB ../Share/DBs/megan-map-Jan2021.db \
                            --format BlastText \
                            --threads 4 &> MEGAN/$SAMPLE.megan.log.txt
 

@@ -23,20 +23,20 @@ Click [here](https://www.codecademy.com/learn/learn-the-command-line) to go the 
 For most of the analyses we will use the Amazon cloud services.  
 The IP address of the Amazon cloud instance will change every day, we will provide it to you at the start of the activities.   
 Your username - that you have received by e-mail - will be the same for the whole course.  
-More information on how to connect to the Amazon cloud instance has been sent to you by e-mail (they are also [here](connecting-to-the-amazon-EC2-service.pdf)).
+More information on how to connect to the Amazon cloud instance has been sent to you by e-mail (also [here](connecting-to-the-amazon-EC2-service.pdf)).
 
 ### Copying the course's GitHub repository
 Once you have connected to the server, you will see your home folder.  
 **Remember**: You can check where you are with the command `pwd`\.  
 
-To have access to the scripts and some of the data, let's copy (clone) this GitHub repository to your home folder using `git clone`:
+To have access to the scripts and some of the data, let's copy this GitHub repository to your home folder using `git clone`:
 
 ```bash
 git clone https://github.com/karkman/physalia_metagenomics
 ```
 
-You should now have a folder called **physalia_metagenomics** there.  
-**Remember**: You can check the contents of your folder with the command `ls`\.  
+You should now have a folder called **physalia_metagenomics** in there.  
+**Remember**: You can check the contents of the folder with the command `ls`\.  
 
 We might update this repository during the course.  
 To get the latest updates, pull the changes from GitHub using `git pull`:
@@ -46,15 +46,21 @@ cd physalia_metagenomics
 git pull
 ```
 
+This physalia_metagenomics folder within your home directory is where everything will be run (aka working directory).  
+So remember, **everytime you connnect to the server**, you have to `cd physalia_metagenomics`\.  
+Every once in a while, also run `git pull` to get the newest version of this repository.
+
+
 ### Getting the raw data
-Now let's make a folder for the raw data:
+Now let's make a folder for the raw data (remember to `cd` to the physalia_metagenomics folder first if you are not yet inside it):
 
 ```bash
 mkdir RAWDATA
 ```
 
-To save disk space (and because copying large files takes time), the raw data will be stored only in one place (`/home/ubuntu/Share/RAWDATA`).  
-We will then create softlinks to these files inside your working directory:
+To save disk space (and because copying large files takes time), the raw data will be stored in a shared folder.  
+The path to this shared folder is `/home/ubuntu/Share/RAWDATA`\.  
+To make things more smooth, we will create softlinks to these files inside your working directory:
 
 ```bash
 ln -s /home/ubuntu/Share/RAWDATA/* RAWDATA

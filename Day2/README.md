@@ -56,9 +56,18 @@ These describe the taxonomic and functional composition of the samples based on 
 First let's copy the four `.rma6` files to your own computers using FileZilla.  
 When that's done let's launch `MEGAN` and take a look together at one of the samples.  
 
-Now, by using the Compare tool, let's try to find differences between the samples.
+Now, by using the `Compare` tool, let's try to find differences between the samples.  
+On the slides for the first day ("Course outline and practical info") we saw that we have two heathland and two fen soils.  
+Can we see major differences in community structure between these two ecosystems? For example:
+- Are samples from the same ecosystem type more similar to each other than to the other samples? **HINT:** Try changing the view to the Genus Rank and then going to "Window" > "Cluster Analysis" and chosing "UPGMA Tree".
+- What is the most abundant phylum in the heathland soils? And in the fen soils?
+- By the way, what is the main environmental difference between these two ecosystems? Can you think about how this could explain the difference in phylum abundance?
+- Now looking at the functional profiles (e.g. SEED), can you spot differences between these two ecosystems? Specially regarding energy and metabolism?
+- Again, how these differences relate to the environmental aspects of these ecosystems?
 
 ## Read-based analyses (Part 2)
+MEGAN is a really poweful tool to explore the data.  
+However, to really dig in and perform more advanced statistical analyses, we will have to rely on the good old R.  
 
 We will now continue the read-based analyses in R.  
 We need some external packages for the analyses, including:

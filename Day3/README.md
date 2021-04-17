@@ -67,4 +67,9 @@ metaquast.py ASSEMBLY_METAFLYE/*/pilon.fasta ASSEMBLY_MEGAHIT/*/final.contigs.fa
                --max-ref-number 0 &> metaquast.fast.log.txt
 ```
 
-After the assembly QC is done, we can go through the report together. 
+Assembly QC takes ~15 min. After it is done, we will go through the report together.   
+Open the report file in the output folder.
+
+```bash
+less METAQUAST_FAST/report.txt
+```

@@ -25,7 +25,7 @@ More information on how to connect to the Amazon cloud instance also in Slack (#
 
 ### Copying the course's GitHub repository
 Once you have connected to the server, you will see your home folder.  
-**Remember**: You can check where you are with the command `pwd`\.  
+**Remember**: You can check where you are with the command `pwd`.  
 
 To have access to the scripts and some of the data, let's copy this GitHub repository to your home folder using `git clone`:
 
@@ -34,7 +34,7 @@ git clone https://github.com/karkman/physalia_metagenomics
 ```
 
 You should now have a folder called **physalia_metagenomics** in there.  
-**Remember**: You can check the contents of the folder with the command `ls`\.  
+**Remember**: You can check the contents of the folder with the command `ls`.  
 
 We might update this repository during the course.  
 To get the latest updates, pull the changes from GitHub using `git pull`:
@@ -45,7 +45,7 @@ git pull
 ```
 
 This physalia_metagenomics folder within your home directory is where everything will be run (aka working directory).  
-So remember, **everytime you connnect to the server**, you have to `cd physalia_metagenomics`\.  
+So remember, **everytime you connnect to the server**, you have to `cd physalia_metagenomics`.  
 Every once in a while, also run `git pull` to get the newest version of this repository.
 
 ### Getting the raw data

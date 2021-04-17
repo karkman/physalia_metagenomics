@@ -3,11 +3,11 @@
 | Time      | Activity                      | Slides                                 | Hands-on                                 |
 |-----------|-------------------------------|----------------------------------------|------------------------------------------|
 | Morning   | Read-based analyses (Part 1)  | [Link here](read-based-analyses-1.pdf) | [Link here](#read-based-analyses-part-1) |
-| Morning   | Read-based analyses (Part 2)  | [Link here](read-based-analyses-2.pdf) | [Link here](#read-based-analyses-part-2) |
-| Afternoon | Read-based analyses (Part 3)  |                                        | [Link here](#read-based-analyses-part-3) |
+| Afternoon | Read-based analyses (Part 2)  |                                        | [Link here](#read-based-analyses-part-2) |
 
 ## Read-based analyses (Part 1)
 
+### Running the script
 First login to the Amazon Cloud and `cd` to your working directory.  
 For the read-based analyses, we will use `seqtk`, `DIAMOND`, `MEGAN` and `METAXA`.  
 Like yesterday, the script is provided and can be found from the `Scripts` folder.  
@@ -32,20 +32,15 @@ Now let's run the script:
 bash Scripts/READ_BASED.sh
 ```
 
-## Read-based analyses (Part 2)
-
+### MEGAN6
 Again, because we are using real data, some steps are quite intensive and require some time to be completed.  
-Let's stop the script by hitting **ctrl+c** and make a softlink to the output that is found in the `Share` folder:  
+Let's wait a while to see if the script seems to be running correctly.  
+Then let's stop it by hitting **ctrl+c**.  
+
+Now take a look at the `MEGAN` folder inside `~/Share`, which contains the actual output from the script we tried to run before:  
 
 ```bash
-ln -sf ../Share/MEGAN/* MEGAN
-ln -sf ../Share/METAXA/* METAXA
-```
-
-Let's take a look at the folder `MEGAN`:
-
-```bash
-ls MEGAN
+ls ~/Share/MEGAN
 ```
 
 For each sample, you should find:
@@ -54,12 +49,16 @@ For each sample, you should find:
 - `$SAMPLE.rma6`: MEGAN output
 - `$SAMPLE.megan.log.txt`: MEGAN log
 
-The `.rma6` files were created by `MEGAN` and contain taxonomic and functional information based on the `DIAMOND` annotation against the NCBI nr database.  
-We can open these files in the GUI version of `MEGAN` that you have installed in your own computer.  
-First let's copy the `.rma6` files to your own computers using FileZilla.  
-When that's done let's launch `MEGAN`.  
+The `.rma6` files are compressed binary files created by `MEGAN` (command-line version).  
+These describe the taxonomic and functional composition of the samples based on the `DIAMOND` annotation against the NCBI nr database.  
 
-## Read-based analyses (Part 3)
+`MEGAN` also has a powerful GUI version, that you have installed in your own computer.  
+First let's copy the four `.rma6` files to your own computers using FileZilla.  
+When that's done let's launch `MEGAN` and take a look together at one of the samples.  
+
+Now, by using the Compare tool, let's try to find differences between the samples.
+
+## Read-based analyses (Part 2)
 
 We will now continue the read-based analyses in R.  
 We need some external packages for the analyses, including:

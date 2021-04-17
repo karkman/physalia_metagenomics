@@ -5,16 +5,21 @@
 | Morning   | Assembly of metagenomes       | [Link here](read-based-analyses-2.pdf) | [Link here](#metagenome-assembly) |
 | Afternoon | Assembly QC                   |                                        | [Link here](#assembly-qc)         |
 
-## Metagenome assembly
+## Github setup
 
-Log in to AWS with the IP provided.
-
-First thing to do is to pull all possible cvhanges in the Github repository
+Log in to AWS with the IP provided.  
+First thing to do is to pull all possible changes in the Github repository
 
 ```bash
 cd physalia_metagenomics
 git pull origin main
 ```
+
+## Metagenome assembly
+
+After that were gonna go thru the metagenomic assembly part, but not run the actual assembly script.
+The assembly takes days and needs more resources than we have on the AWS instance.
+So the assemblies will be provided.
 
 
 ### Assembly QC

@@ -95,24 +95,30 @@ library(DESeq2)
 library(patchwork)
 ```
 
+And let's change the directory the `READ_BASED_R` folder:
+
+```r
+setwd("PUT-HERE-TO-THE-PATH-TO-THE-READ-BASED-R-FOLDER")
+```
+
 ### Data import
 
 ```r
 # Read metadata
-metadata <- read.table("READ_BASED_R/metadata.txt", sep = "\t", row.names = 1, header = TRUE)
+metadata <- read.table("metadata.txt", sep = "\t", row.names = 1, header = TRUE)
 
-# Read METAXA results at the genus level
-metaxa_genus <- read.table("READ_BASED_R/metaxa_genus.txt", sep = "\t", header = TRUE, row.names = 1)
+# Read metaxa results at the genus level
+metaxa_genus <- read.table("metaxa_genus.txt", sep = "\t", header = TRUE, row.names = 1)
 
 # Make taxonomy data frame
-TAX <- data.frame(Taxa = row.names(metaxa_genus)) %>%
+metaxa_TAX <- data.frame(Taxa = row.names(metaxa_genus)) %>%
   separate(Taxa, into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus"), sep = ";")
 
 row.names(metaxa_genus) <- paste0("OTU", seq(nrow(metaxa_genus)))
-row.names(TAX) <- paste0("OTU", seq(nrow(metaxa_genus)))
+row.names(metaxa_TAX) <- paste0("OTU", seq(nrow(metaxa_genus)))
 
 # Make a phyloseq object
-metaxa_genus <- phyloseq(otu_table(metaxa_genus, taxa_are_rows = TRUE), tax_table(as.matrix(TAX)), sample_data(metadata))
+metaxa_genus <- phyloseq(otu_table(metaxa_genus, taxa_are_rows = TRUE), tax_table(as.matrix(metaxa_TAX)), sample_data(metadata))
 ```
 
 ### Data exploration
@@ -133,41 +139,41 @@ sample_sums(metaxa_genus)
 barplot(sample_sums(metaxa_genus))
 
 # See the top 10 OTUs (most abundant throughout all samples)
-abund_taxa <- taxa_sums(metaxa_genus) %>%
+metaxa_abund <- taxa_sums(metaxa_genus) %>%
   sort(decreasing = TRUE) %>%
   head(10) %>%
   names()
 
 # See taxonomy for these OTUs
-tax_table(metaxa_genus)[abund_taxa]
+tax_table(metaxa_genus)[metaxa_abund]
 ```
 
 ### Alpha diversity
 
 ```r
 # Calculate and plot Shannon diversity
-shannon <- diversity(t(otu_table(metaxa_genus)), index="shannon")
-barplot(shannon, ylab="Shannon diversity")
+metaxa_shannon <- diversity(t(otu_table(metaxa_genus)), index = "shannon")
+barplot(metaxa_shannon, ylab = "Shannon diversity")
 
 # Calculate and plot richness
-observed <- specnumber(t(otu_table(metaxa_genus)))
-barplot(observed, ylab="Observed taxa")
+metaxa_observed <- specnumber(t(otu_table(metaxa_genus)))
+barplot(metaxa_observed, ylab = "Observed taxa")
 ```
 
 ### Beta diversity
 
 ```r
 # Calculate distance matrix and do ordination  
-dist_mat <- vegdist(t(otu_table(metaxa_genus)))
-ord <- cmdscale(dist_mat)
-ord_df <- data.frame(ord, Ecosystem = sample_data(metaxa_genus)$Ecosystem)
+metaxa_dist <- vegdist(t(otu_table(metaxa_genus)))
+metaxa_ord <- cmdscale(metaxa_dist)
+metaxa_ord_df <- data.frame(metaxa_ord, Ecosystem = sample_data(metaxa_genus)$Ecosystem)
 
 # Plot ordination
-ggplot(ord_df, aes(x = X1, y = X2, color = Ecosystem)) +
+ggplot(metaxa_ord_df, aes(x = X1, y = X2, color = Ecosystem)) +
   geom_point(size = 3) +
   scale_color_manual(values=c("firebrick", "royalblue")) +
   theme_classic() + labs(x = "Axis-1", y = "Axis-2") +
-  geom_text(label = row.names(df), nudge_y = 0.03) +
+  geom_text(label = row.names(metaxa_ord_df), nudge_y = 0.03) +
   theme(legend.position = "bottom")
 ```
 
@@ -178,16 +184,16 @@ ggplot(ord_df, aes(x = X1, y = X2, color = Ecosystem)) +
 metaxa_genus_noeuk <- subset_taxa(metaxa_genus, Kingdom!="Eukaryota")
 
 # Run deseq
-deseq_genus <- phyloseq_to_deseq2(metaxa_genus_noeuk, ~ Ecosystem)
-deseq_genus <- DESeq(deseq_genus, test = "Wald", fitType = "local")
+metaxa_deseq <- phyloseq_to_deseq2(metaxa_genus_noeuk, ~ Ecosystem)
+metaxa_deseq <- DESeq(metaxa_deseq, test = "Wald", fitType = "local")
 
 # Get deseq results
-deseq_genus_res <- results(deseq_genus, cooksCutoff = FALSE)
+metaxa_deseq_res <- results(metaxa_deseq, cooksCutoff = FALSE)
 
 # Keep only p < 0.01
-deseq_genus_sig <- deseq_genus_res[which(deseq_genus_res$padj < 0.01), ]
-deseq_genus_sig <- cbind(as(deseq_genus_sig, "data.frame"), as(tax_table(metaxa_genus_noeuk)[rownames(deseq_genus_sig), ], "matrix"))
+metaxa_deseq_sig <- metaxa_deseq_res[which(metaxa_deseq_res$padj < 0.01), ]
+metaxa_deseq_sig <- cbind(as(metaxa_deseq_sig, "data.frame"), as(tax_table(metaxa_genus_noeuk)[rownames(metaxa_deseq_sig), ], "matrix"))
 
-deseq_genus_sig[order(deseq_genus_sig$log2FoldChange),] %>%
-  knitr::kable(digits=2)
+metaxa_deseq_sig[order(metaxa_deseq_sig$log2FoldChange),] %>%
+  knitr::kable(digits = 2)
 ```

@@ -1,14 +1,20 @@
 # Day 2
 
-| Time      | Activity                      | Slides                                 | Hands-on                                 |
-|-----------|-------------------------------|----------------------------------------|------------------------------------------|
-| Morning   | Read-based analyses (Part 1)  | [Link here](read-based-analyses-1.pdf) | [Link here](#read-based-analyses-part-1) |
-| Afternoon | Read-based analyses (Part 2)  |                                        | [Link here](#read-based-analyses-part-2) |
+| Time      | Activity                      | Slides                               | Hands-on                                 |
+|-----------|-------------------------------|--------------------------------------|------------------------------------------|
+| Morning   | Read-based analyses (Part 1)  | [Link here](read-based-analyses.pdf) | [Link here](#read-based-analyses-part-1) |
+| Afternoon | Read-based analyses (Part 2)  |                                      | [Link here](#read-based-analyses-part-2) |
 
 ## Read-based analyses (Part 1)
 
 ### Running the script
 First login to the Amazon Cloud and `cd` to your working directory.  
+We migh have made changes to the GitHub repository, so let's pull those changes now:
+
+```bash
+git pull
+```
+
 For the read-based analyses, we will use `seqtk`, `DIAMOND`, `MEGAN` and `METAXA`.  
 Like yesterday, the script is provided and can be found from the `Scripts` folder.  
 Let's take a look at the script using `less`:

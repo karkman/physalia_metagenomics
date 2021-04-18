@@ -1,21 +1,19 @@
 # Day 3
 
-| Time      | Activity                      | Slides                                 | Hands-on                          |
-|-----------|-------------------------------|----------------------------------------|-----------------------------------|
-| Morning   | Assembly of metagenomes       | [Link here](read-based-analyses-2.pdf) | [Link here](#metagenome-assembly) |
-| Afternoon | Assembly QC                   |                                        | [Link here](#assembly-qc)         |
+| Time      | Activity            | Slides                               | Hands-on                          |
+|-----------|---------------------|--------------------------------------|-----------------------------------|
+| Morning   | Metagenome assembly | [Link here](metagenome-assembly.pdf) | [Link here](#metagenome-assembly) |
+| Afternoon | Assembly QC         |                                      | [Link here](#assembly-qc)         |
 
-## Github setup
+## Metagenome assembly
 
-Log in to our cloud instance with the IP provided.  
-First thing to do is to pull all possible changes in the Github repository
+First log in to our cloud instance with the IP provided and `cd` to your working directory.  
+Let's then pull possible changes in the Github repository:
 
 ```bash
 cd physalia_metagenomics
 git pull origin main
 ```
-
-## Metagenome assembly
 
 After that we're gonna go through the metagenomic assembly part, but not run the actual assembly script.  
 The assembly takes days and needs more resources than we have on our instance.

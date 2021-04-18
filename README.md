@@ -37,6 +37,7 @@ By completing this course, you will:
 - Course outline and practical info
 - Introduction to metagenomics
 - Working with the command line
+- Setting up the Amazon Cloud
 - QC and trimming
 
 ### Tuesday 20.04
@@ -48,11 +49,10 @@ By completing this course, you will:
 [Click here](Day3/)
 
 - Metagenome assembly
-- Hybrid assembly
 - Assembly QC
 
 ### Thursday 22.04
-- Genome-resolved metagenomics (Anvi'o)
+- Genome-resolved metagenomics (anvi'o)
 
 ### Friday 23.04
-- Annotation of MAGs
+- MAG annotation and downstream analyses

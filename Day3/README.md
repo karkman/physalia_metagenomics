@@ -43,7 +43,7 @@ But we won't do it, since we don't have to time or the resources. Instead, you c
 
 Inside the folder you'll find the assembly logs and the actual assembly folder for each sample. Start by looking at the assembly logs.
 
-Questions:
+#### Questions about the assembly
 1. __Which version did we actually use for the assemblies?__
 2. __How long did the individual assemblies take?__
 3. __Which sample gave the longest contig?__
@@ -73,3 +73,8 @@ Open the report file in the output folder.
 ```bash
 less METAQUAST_FAST/report.txt
 ```
+#### Questions about the assembly QC
+
+1. question
+2. Question
+3. one more question 

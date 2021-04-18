@@ -38,7 +38,7 @@ Now let's run the script:
 bash Scripts/READ_BASED.sh
 ```
 
-### MEGAN6
+### MEGAN
 Again, because we are using real data, some steps are quite intensive and require some time to be completed.  
 Let's wait a while to see if the script seems to be running correctly.  
 Then let's stop it by hitting **ctrl+c**.  
@@ -74,7 +74,8 @@ Can we see major differences in community structure between these two ecosystems
 ## Read-based analyses (Part 2)
 MEGAN is a really poweful tool to explore the data.  
 However, to really dig in and perform more advanced statistical analyses, we will use R.  
-We need some external packages for the analyses, including:
+First download the `READ_BASED_R` folder that is inside the `Share` folder to your own computer using FileZilla.  
+We also need some external packages for the analyses, including:
 
 - `tidyverse` for data wrangling (includes `ggplot2` for plotting)
 - `phyloseq` for easy storage and manipulation of ’omics data
@@ -82,7 +83,7 @@ We need some external packages for the analyses, including:
 - `DESeq2` for differential abundance analysis
 - `patchwork` for plot layouts
 
-First download the `READ_BASED_R` folder that is inside the `Share` folder to your own computer using FileZilla.  
+### METAXA
 Now we will work on the output of `METAXA`, the other tool we have employed to obtain taxonomic profiles for the communities.  
 
 Let's start RStudio and load the necessary packages:
@@ -101,7 +102,7 @@ And let's change the directory the `READ_BASED_R` folder:
 setwd("PUT-HERE-TO-THE-PATH-TO-THE-READ-BASED-R-FOLDER")
 ```
 
-### Data import
+#### Data import
 
 ```r
 # Read metadata
@@ -121,7 +122,7 @@ row.names(metaxa_TAX) <- paste0("OTU", seq(nrow(metaxa_genus)))
 metaxa_genus <- phyloseq(otu_table(metaxa_genus, taxa_are_rows = TRUE), tax_table(as.matrix(metaxa_TAX)), sample_data(metadata))
 ```
 
-### Data exploration
+#### Data exploration
 
 ```r
 # Take a look at the phyloseq object
@@ -148,7 +149,7 @@ metaxa_abund <- taxa_sums(metaxa_genus) %>%
 tax_table(metaxa_genus)[metaxa_abund]
 ```
 
-### Alpha diversity
+#### Alpha diversity
 
 ```r
 # Calculate and plot Shannon diversity
@@ -160,7 +161,7 @@ metaxa_observed <- specnumber(t(otu_table(metaxa_genus)))
 barplot(metaxa_observed, ylab = "Observed taxa")
 ```
 
-### Beta diversity
+#### Beta diversity
 
 ```r
 # Calculate distance matrix and do ordination  
@@ -178,7 +179,7 @@ ggplot(metaxa_ord_df, aes(x = X1, y = X2, color = Ecosystem)) +
   theme(legend.position = "bottom")
 ```
 
-### Differential abundance analysis
+#### Differential abundance analysis
 
 ```r
 # Remove eukaryotes
@@ -199,9 +200,12 @@ metaxa_deseq_sig[order(metaxa_deseq_sig$log2FoldChange),] %>%
   knitr::kable(digits = 2)
 ```
 
-## MEGAN
+### MEGAN
 
-### Data import
+Let's also look at the data we exported from `MEGAN` using R.  
+After importing the data as shown below, repeat the steps you have done for the `METAXA` data, this time using as input the `megan_genus`, `megan_COG`, and `MEGAN_SEED` objects.  
+
+#### Data import
 
 ```r
 # Read MEGAN results at the genus level

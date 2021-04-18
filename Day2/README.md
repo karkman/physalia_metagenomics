@@ -107,7 +107,7 @@ setwd("PUT-HERE-TO-THE-PATH-TO-THE-READ-BASED-R-FOLDER")
 # Read metadata
 metadata <- read.table("metadata.txt", sep = "\t", row.names = 1, header = TRUE)
 
-# Read metaxa results at the genus level
+# Read METAXA results at the genus level
 metaxa_genus <- read.table("metaxa_genus.txt", sep = "\t", header = TRUE, row.names = 1)
 
 # Make taxonomy data frame

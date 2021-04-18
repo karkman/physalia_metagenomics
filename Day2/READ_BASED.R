@@ -13,7 +13,7 @@ setwd("~/Helsinki/TEACHING/PHYSALIA/data/READ_BASED_R")
 ### Read metadata
 metadata <- read.table("metadata.txt", sep = "\t", row.names = 1, header = TRUE)
 
-### Read metaxa results at the genus level
+### Read METAXA results at the genus level
 metaxa_genus <- read.table("metaxa_genus.txt", sep = "\t", header = TRUE, row.names = 1)
 
 ### Make taxonomy data frame
@@ -99,15 +99,18 @@ metaxa_deseq_sig[order(metaxa_deseq_sig$log2FoldChange),] %>%
   
 ## Data import
   
-### Read METAXA results at the genus level
-megan_genus <- import_biom("Data/MEGAN_genus.biom")
+### Read MEGAN results at the genus level
+megan_genus <- import_biom("MEGAN_genus.biom")
 sample_data(megan_genus) <- sample_data(metadata)
 
-megan_COG <- import_biom("Data/MEGAN_EGGNOG.biom")
+### Read COG functions
+megan_COG <- import_biom("MEGAN_EGGNOG.biom")
 sample_data(megan_COG) <- sample_data(metadata)
-megan_SEED <- import_biom("Data/MEGAN_SEED.biom")
+
+### Read SEED functions
+megan_SEED <- import_biom("MEGAN_SEED.biom")
 sample_data(megan_SEED) <- sample_data(metadata)
-```
+
 
 ### Data exploration
 

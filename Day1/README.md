@@ -3,7 +3,7 @@
 | Time      | Activity                          | Slides                                                | Hands-on                                    |
 |-----------|-----------------------------------|-------------------------------------------------------|---------------------------------------------|
 | Morning   | Course outline and practical info | [Link here](course-outline.pdf)                       |                                             |
-| Morning   | Introduction to metagenomics      | [Link here](introduction-to-metagenomics.pdf)         |                                             |
+| Morning   | Introduction to metagenomics      | [Link here](intro-to-metagenomics.pdf)         |                                             |
 | Morning   | Working with the command line     | [Link here](working-with-the-command-line.pdf)        | [Link here](#working-with-the-command-line) |
 | Afternoon | Setting up the Amazon Cloud       |                                                       | [Link here](#setting-up-the-amazon-cloud)   |
 | Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pdf)                      | [Link here](#qc-and-trimming)               |

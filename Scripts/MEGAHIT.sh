@@ -4,7 +4,7 @@ conda activate assembly_env
 mkdir ASSEMBLY_MEGAHIT
 
 for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
-	megahit -1 TRIMMED/$SAMPLE.NOVASEQ.R1.fastq.gz \
+  megahit -1 TRIMMED/$SAMPLE.NOVASEQ.R1.fastq.gz \
           -2 TRIMMED/$SAMPLE.NOVASEQ.R2.fastq.gz \
           --out-dir ASSEMBLY_MEGAHIT/$SAMPLE \
           --min-contig-len 1000 \

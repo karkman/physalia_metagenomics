@@ -39,7 +39,9 @@ After that have a look at the assembly script `Scripts/MEGAHIT.sh`. Open it with
 __Would you have changed something else and why?__
 
 When we're satisfied with the assembly options, we would start the assembly and wait from few hours to several days depending on your data and computational resources.  
-But we won't do it, since we don't have to time or the resources. Instead, you can copy the assemblies and log files to your own folder from `Share/ASSEMBLY_MEGAHIT/`. First open the assembly log files.
+But we won't do it, since we don't have to time or the resources. Instead, you can copy the assemblies and log files to your own folder from `Share/ASSEMBLY_MEGAHIT/`.  
+
+Inside the folder you'll find the assembly logs and the actual assembly folder for each sample. Start by looking at the assembly logs.
 
 Questions:
 1. __Which version did we actually use for the assemblies?__

@@ -172,7 +172,8 @@ metaxa_ord_df <- data.frame(metaxa_ord, Ecosystem = sample_data(metaxa_genus)$Ec
 ggplot(metaxa_ord_df, aes(x = X1, y = X2, color = Ecosystem)) +
   geom_point(size = 3) +
   scale_color_manual(values=c("firebrick", "royalblue")) +
-  theme_classic() + labs(x = "Axis-1", y = "Axis-2") +
+  theme_classic() +
+  labs(x = "Axis-1", y = "Axis-2") +
   geom_text(label = row.names(metaxa_ord_df), nudge_y = 0.03) +
   theme(legend.position = "bottom")
 ```
@@ -196,4 +197,22 @@ metaxa_deseq_sig <- cbind(as(metaxa_deseq_sig, "data.frame"), as(tax_table(metax
 
 metaxa_deseq_sig[order(metaxa_deseq_sig$log2FoldChange),] %>%
   knitr::kable(digits = 2)
+```
+
+## MEGAN
+
+### Data import
+
+```r
+# Read MEGAN results at the genus level
+megan_genus <- import_biom("MEGAN_genus.biom")
+sample_data(megan_genus) <- sample_data(metadata)
+
+# Read COG functions
+megan_COG <- import_biom("MEGAN_EGGNOG.biom")
+sample_data(megan_COG) <- sample_data(metadata)
+
+# Read SEED functions
+megan_SEED <- import_biom("MEGAN_SEED.biom")
+sample_data(megan_SEED) <- sample_data(metadata)
 ```

@@ -139,7 +139,7 @@ sample_data(metaxa_genus)
 sample_sums(metaxa_genus)
 
 # Plot the number of reads within each sample
-barplot(sample_sums(metaxa_genus))
+barplot(sample_sums(metaxa_genus), las=3)
 
 # See the top 10 OTUs (most abundant throughout all samples)
 metaxa_abund <- taxa_sums(metaxa_genus) %>%
@@ -148,7 +148,17 @@ metaxa_abund <- taxa_sums(metaxa_genus) %>%
   names()
 
 # See taxonomy for these OTUs
-tax_table(metaxa_genus)[metaxa_abund]
+tax_table(metaxa_genus)[metaxa_abund,]
+
+# And their abundance in our samples
+otu_table(metaxa_genus)[metaxa_abund,]
+```
+
+# Heatmap of most abundant taxa
+
+```r
+metaxa_top10 <- prune_taxa(metaxa_abund, metaxa_genus)
+heatmap(as.matrix(sqrt(t(otu_table(metaxa_top10)))), col=rev(heat.colors(20)))  
 ```
 
 #### Alpha diversity
@@ -156,11 +166,11 @@ tax_table(metaxa_genus)[metaxa_abund]
 ```r
 # Calculate and plot Shannon diversity
 metaxa_shannon <- diversity(t(otu_table(metaxa_genus)), index = "shannon")
-barplot(metaxa_shannon, ylab = "Shannon diversity")
+barplot(metaxa_shannon, ylab = "Shannon diversity", las=3)
 
 # Calculate and plot richness
 metaxa_observed <- specnumber(t(otu_table(metaxa_genus)))
-barplot(metaxa_observed, ylab = "Observed taxa")
+barplot(metaxa_observed, ylab = "Observed taxa", las=3  )
 ```
 
 #### Beta diversity
@@ -185,7 +195,7 @@ ggplot(metaxa_ord_df, aes(x = X1, y = X2, color = Ecosystem)) +
 
 ```r
 # Remove eukaryotes
-metaxa_genus_noeuk <- subset_taxa(metaxa_genus, Kingdom!="Eukaryota")
+metaxa_genus_noeuk <- subset_taxa(metaxa_genus, Kingdom=="Bacteria" | Kingdom=="Archaea")
 
 # Run deseq
 metaxa_deseq <- phyloseq_to_deseq2(metaxa_genus_noeuk, ~ Ecosystem)
@@ -198,8 +208,7 @@ metaxa_deseq_res <- results(metaxa_deseq, cooksCutoff = FALSE)
 metaxa_deseq_sig <- metaxa_deseq_res[which(metaxa_deseq_res$padj < 0.01), ]
 metaxa_deseq_sig <- cbind(as(metaxa_deseq_sig, "data.frame"), as(tax_table(metaxa_genus_noeuk)[rownames(metaxa_deseq_sig), ], "matrix"))
 
-metaxa_deseq_sig[order(metaxa_deseq_sig$log2FoldChange),] %>%
-  knitr::kable(digits = 2)
+metaxa_deseq_sig[order(metaxa_deseq_sig$log2FoldChange),]
 ```
 
 ### MEGAN

@@ -32,7 +32,7 @@ By completing this course, you will:
 ## Program
 
 ### Monday 19.04
-[Click here](Day1/README.md)
+[Click here](Day1/)
 
 - Course outline and practical info
 - Introduction to metagenomics
@@ -41,12 +41,12 @@ By completing this course, you will:
 - QC and trimming
 
 ### Tuesday 20.04
-[Click here](Day2/README.md)
+[Click here](Day2/)
 
 - Read-based analyses
 
 ### Wednesday 21.04
-[Click here](Day3/README.md)
+[Click here](Day3/)
 
 - Metagenome assembly
 - Assembly QC

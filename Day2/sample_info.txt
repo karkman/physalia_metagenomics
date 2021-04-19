@@ -1,4 +1,4 @@
-SampleID	Sample	Ecosystem
+SampleID	SampleName	Ecosystem
 Sample01	m11204	heathland
 Sample02	m12209	fen
 Sample03	m12208	fen

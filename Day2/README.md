@@ -109,7 +109,7 @@ setwd("PUT-HERE-TO-THE-PATH-TO-THE-READ-BASED-R-FOLDER")
 metadata <- read.table("sample_info.txt", sep = "\t", row.names = 1, header = TRUE)
 
 # Read METAXA results at the genus level
-metaxa_genus <- read.table("metaxa_genus.txt", sep = "\t", header = TRUE, row.names = 1)
+metaxa_genus <- read.table("metaxa_genus.txt", sep = "\t", header = TRUE, row.names  = 1)
 
 # Make taxonomy data frame
 metaxa_TAX <- data.frame(Taxa = row.names(metaxa_genus)) %>%
@@ -119,7 +119,9 @@ row.names(metaxa_genus) <- paste0("OTU", seq(nrow(metaxa_genus)))
 row.names(metaxa_TAX) <- paste0("OTU", seq(nrow(metaxa_genus)))
 
 # Make a phyloseq object
-metaxa_genus <- phyloseq(otu_table(metaxa_genus, taxa_are_rows = TRUE), tax_table(as.matrix(metaxa_TAX)), sample_data(metadata))
+metaxa_genus <- phyloseq(otu_table(metaxa_genus, taxa_are_rows = TRUE),
+                        tax_table(as.matrix(metaxa_TAX)),
+                        sample_data(metadata))
 ```
 
 #### Data exploration

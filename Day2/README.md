@@ -154,7 +154,7 @@ tax_table(metaxa_genus)[metaxa_abund,]
 otu_table(metaxa_genus)[metaxa_abund,]
 ```
 
-# Heatmap of most abundant taxa
+#### Heatmap of the most abundant taxa
 
 ```r
 metaxa_top10 <- prune_taxa(metaxa_abund, metaxa_genus)

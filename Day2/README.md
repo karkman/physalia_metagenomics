@@ -106,7 +106,7 @@ setwd("PUT-HERE-TO-THE-PATH-TO-THE-READ-BASED-R-FOLDER")
 
 ```r
 # Read metadata
-metadata <- read.table("sample-info.txt", sep = "\t", row.names = 1, header = TRUE)
+metadata <- read.table("sample_info.txt", sep = "\t", row.names = 1, header = TRUE)
 
 # Read METAXA results at the genus level
 metaxa_genus <- read.table("metaxa_genus.txt", sep = "\t", header = TRUE, row.names = 1)

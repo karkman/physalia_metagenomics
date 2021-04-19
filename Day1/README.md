@@ -3,7 +3,7 @@
 | Time      | Activity                          | Slides                                                | Hands-on                                    |
 |-----------|-----------------------------------|-------------------------------------------------------|---------------------------------------------|
 | Morning   | Course outline and practical info | [Link here](course-outline.pdf)                       |                                             |
-| Morning   | Introduction to metagenomics      | [Link here](intro-to-metagenomics.pdf)         |                                             |
+| Morning   | Introduction to metagenomics      | [Link here](intro-to-metagenomics.pdf)                |                                             |
 | Morning   | Working with the command line     | [Link here](working-with-the-command-line.pdf)        | [Link here](#working-with-the-command-line) |
 | Afternoon | Setting up the Amazon Cloud       |                                                       | [Link here](#setting-up-the-amazon-cloud)   |
 | Afternoon | QC and trimming                   | [Link here](QC-and-trimming.pdf)                      | [Link here](#qc-and-trimming)               |
@@ -12,6 +12,8 @@
 Most of our activities will be done using the Unix command line (aka Unix shell).  
 It is thus highly recommend to have at least a basic grasp of how to get around in the Unix shell.  
 We will now dedicate one hour or so to follow some basic to learn (or refresh) the basics of the Unix shell.  
+**Windows users:** Open [this terminal emulator](https://bellard.org/jslinux/vm.html?url=alpine-x86.cfg&mem=192) in a new window.  
+**MacOS/Linux:** Launch terminal on your machine.
 
 ### Playing around with basic UNIX commands
 

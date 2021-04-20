@@ -372,8 +372,8 @@ By looking at the `Cutadapt` log, can you answer:
 - Overall, what is the percentage of base pairs that were kept?
 
 We can also take a look at how the trimmed data looks by running the QC steps (`FastQC` and `MultiQC`) again.  
-Since `FASTQC` takes time, we have done that for you and you will run the `MultiQC` part.
-Go to the `TRIMMED` folder and run the command from there.
+Since `FastQC` takes time, we have done that for you and you will run the `MultiQC` part.  
+Go to the `TRIMMED` folder, copy the `FastQC` files and run `MultiQC`.
 
 **REMEMBER**:
 - To check where you are with `pwd`.

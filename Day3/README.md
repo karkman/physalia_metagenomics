@@ -81,7 +81,7 @@ less METAQUAST_FAST/report.txt
 ```
 #### Questions about the assembly QC
 
-1. Which assembly has the longest contig?
-2. Which assembly had the most contigs?
-3. Were the long read assemblies different from the corresponding short read assemblies?
-4. If yes, in what way?
+1. __Which assembly has the longest contig when also long reads assemblies are included?__
+2. __Which assembly had the most contigs?__
+3. __Were the long read assemblies different from the corresponding short read assemblies?__
+4. __If yes, in what way?__

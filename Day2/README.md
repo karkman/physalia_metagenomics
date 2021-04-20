@@ -109,7 +109,7 @@ setwd("PUT-HERE-TO-THE-PATH-TO-THE-READ-BASED-R-FOLDER")
 metadata <- read.table("sample_info.txt", sep = "\t", row.names = 1, header = TRUE)
 
 # Read METAXA results at the genus level
-metaxa_genus <- read.table("metaxa_genus.txt", sep = "\t", header = TRUE, row.names  = 1)
+metaxa_genus <- read.table("metaxa_genus.txt", sep = "\t", header = TRUE, row.names = 1)
 
 # Make taxonomy data frame
 metaxa_TAX <- data.frame(Taxa = row.names(metaxa_genus)) %>%
@@ -139,7 +139,7 @@ sample_data(metaxa_genus)
 sample_sums(metaxa_genus)
 
 # Plot the number of reads within each sample
-barplot(sample_sums(metaxa_genus), las=3)
+barplot(sample_sums(metaxa_genus), las = 3)
 
 # See the top 10 OTUs (most abundant throughout all samples)
 metaxa_abund <- taxa_sums(metaxa_genus) %>%
@@ -158,7 +158,8 @@ otu_table(metaxa_genus)[metaxa_abund,]
 
 ```r
 metaxa_top10 <- prune_taxa(metaxa_abund, metaxa_genus)
-heatmap(as.matrix(sqrt(t(otu_table(metaxa_top10)))), col=rev(heat.colors(20)))  
+
+heatmap(as.matrix(sqrt(t(otu_table(metaxa_top10)))), col = rev(heat.colors(20)))  
 ```
 
 #### Alpha diversity

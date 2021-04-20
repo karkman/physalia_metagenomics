@@ -39,7 +39,13 @@ After that have a look at the assembly script `Scripts/MEGAHIT.sh`. Open it with
 __Would you have changed something else and why?__
 
 When we're satisfied with the assembly options, we would start the assembly and wait from few hours to several days depending on your data and computational resources.  
-But we won't do it, since we don't have to time or the resources. Instead, you can copy the assemblies and log files to your own folder from `Share/ASSEMBLY_MEGAHIT/`.  
+But we won't do it, since we don't have to time or the resources.  
+Instead, you can copy the assemblies and log files to your own folder from `Share/ASSEMBLY_MEGAHIT/`.
+The copying will complain about permissions, but you don't need to worry about that. It just won't copy some intermediate files.  
+
+```bash
+cp -r ~/Share/ASSEMBLY_MEGAHIT/ ./
+```
 
 Inside the folder you'll find the assembly logs and the actual assembly folder for each sample. Start by looking at the assembly logs.
 
@@ -62,7 +68,7 @@ You should at least check the options we are using.
 ```bash
 metaquast.py ASSEMBLY_METAFLYE/*/pilon.fasta ASSEMBLY_MEGAHIT/*/final.contigs.fa \
                -o METAQUAST_FAST \
-               --threads 2 \
+               --threads 1 \
                --fast \
                --max-ref-number 0 &> metaquast.fast.log.txt
 ```
@@ -75,6 +81,7 @@ less METAQUAST_FAST/report.txt
 ```
 #### Questions about the assembly QC
 
-1. question
-2. Question
-3. one more question 
+1. Which assembly has the longest contig?
+2. Which assembly had the most contigs?
+3. Were the long read assemblies different from the corresponding short read assemblies?
+4. If yes, in what way?

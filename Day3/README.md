@@ -16,42 +16,47 @@ git pull origin main
 ```
 
 After that we're gonna go through the metagenomic assembly part, but not run the actual assembly script.  
-The assembly takes days and needs more resources than we have on our instance.
+The assembly takes days and needs more resources than we have on our instance.  
 So the assemblies will be provided.  
 
 ### Short-read assembly with megahit
-The short reads will be assembled using `megahit`. Although, we won't be running the actual assembly, `megahit` is installed on our instance.  
+The short reads will be assembled using `megahit`.  
+Although, we won't be running the actual assembly, `megahit` is installed on our instance.  
 
 So have a look at the different options you can change in the assembly.  
-You can find more information about `megahit` from the [megahit wiki](https://github.com/voutcn/megahit/wiki). You don't need to understand each and every option, but some of them can be important.
+You can find more information about `megahit` from the [megahit wiki](https://github.com/voutcn/megahit/wiki).  
+You don't need to understand each and every option, but some of them can be important.
 
 ```bash
 conda activate assembly_env
 megahit -h
 ```
 
-#### Questions about the megahit
+#### Questions about megahit
 1. __What do you think would be important? What would you change or set?__  
 2. __What version of megahit have we installed? Is it the latest?__
 
-After that have a look at the assembly script `Scripts/MEGAHIT.sh`. Open it with a text editor or print it on the screen with `less`.  
+After that have a look at the assembly script `Scripts/MEGAHIT.sh`.  
+Open it with a text editor or print it on the screen with `less`.  
 
 __Would you have changed something else and why?__
 
 When we're satisfied with the assembly options, we would start the assembly and wait from few hours to several days depending on your data and computational resources.  
 But we won't do it, since we don't have to time or the resources.  
-Instead, you can copy the assemblies and log files to your own folder from `Share/ASSEMBLY_MEGAHIT/`.
-The copying will complain about permissions, but you don't need to worry about that. It just won't copy some intermediate files.  
+Instead, you can copy the assemblies and log files to your own folder from `Share/ASSEMBLY_MEGAHIT/`.  
+The copying will complain about permissions, but you don't need to worry about that.  
+It just won't copy some intermediate files.  
 
 ```bash
 cp -r ~/Share/ASSEMBLY_MEGAHIT/ ./
 ```
 
-Inside the folder you'll find the assembly logs and the actual assembly folder for each sample. Start by looking at the assembly logs.
+Inside the folder you'll find the assembly logs and the actual assembly folder for each sample.  
+Start by looking at the assembly logs with `less`.
 
 #### Questions about the assembly
 1. __Which version did we actually use for the assemblies?__
-2. __How long did the individual assemblies take?__
+2. __How long did the assemblies take to finish?__
 3. __Which sample gave the longest contig?__
 
 ### Long-read assembly with metaFlye

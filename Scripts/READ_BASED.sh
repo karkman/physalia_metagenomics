@@ -31,7 +31,6 @@ for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
 
   metaxa2_ttt -i METAXA/$SAMPLE.taxonomy.txt \
               -o METAXA/$SAMPLE >> METAXA/$SAMPLE.metaxa.log.txt
-
 done
 
-metaxa2_dc -o metaxa_genus.txt *level_6.txt
+metaxa2_dc -o METAXA/metaxa_genus.txt METAXA/*level_6.txt

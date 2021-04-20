@@ -167,11 +167,11 @@ heatmap(as.matrix(sqrt(t(otu_table(metaxa_top10)))), col = rev(heat.colors(20)))
 ```r
 # Calculate and plot Shannon diversity
 metaxa_shannon <- diversity(t(otu_table(metaxa_genus)), index = "shannon")
-barplot(metaxa_shannon, ylab = "Shannon diversity", las=3)
+barplot(metaxa_shannon, ylab = "Shannon diversity", las = 3)
 
 # Calculate and plot richness
 metaxa_observed <- specnumber(t(otu_table(metaxa_genus)))
-barplot(metaxa_observed, ylab = "Observed taxa", las=3  )
+barplot(metaxa_observed, ylab = "Observed taxa", las = 3)
 ```
 
 #### Beta diversity
@@ -196,7 +196,7 @@ ggplot(metaxa_ord_df, aes(x = X1, y = X2, color = Ecosystem)) +
 
 ```r
 # Remove eukaryotes
-metaxa_genus_noeuk <- subset_taxa(metaxa_genus, Kingdom=="Bacteria" | Kingdom=="Archaea")
+metaxa_genus_noeuk <- subset_taxa(metaxa_genus, Kingdom == "Bacteria" | Kingdom == "Archaea")
 
 # Run deseq
 metaxa_deseq <- phyloseq_to_deseq2(metaxa_genus_noeuk, ~ Ecosystem)

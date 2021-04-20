@@ -60,9 +60,8 @@ Start by looking at the assembly logs with `less`.
 3. __Which sample gave the longest contig?__
 
 ### Long-read assembly with metaFlye
-We will also assemble the Nanopore data using `metaFlye` (which is actually a version of the genome assembler `Flye` with different settings that are optimized for metagenomes).
+We will also assemble the Nanopore data using `metaFlye` (which is actually a version of the genome assembler `Flye` with different settings that are optimized for metagenomes).  
 You can read more about `Flye/metaflye` [here](https://github.com/fenderglass/Flye).
-_Igor adds this part_
 
 
 ## Assembly QC

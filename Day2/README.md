@@ -209,7 +209,20 @@ metaxa_deseq_res <- results(metaxa_deseq, cooksCutoff = FALSE)
 metaxa_deseq_sig <- metaxa_deseq_res[which(metaxa_deseq_res$padj < 0.01), ]
 metaxa_deseq_sig <- cbind(as(metaxa_deseq_sig, "data.frame"), as(tax_table(metaxa_genus_noeuk)[rownames(metaxa_deseq_sig), ], "matrix"))
 
-metaxa_deseq_sig[order(metaxa_deseq_sig$log2FoldChange),]
+### Plot differentially abundanta taxa
+left_join(otu_table(metaxa_genus_noeuk) %>% as.data.frame %>% rownames_to_column("OTU"),
+          metaxa_TAX %>% rownames_to_column("OTU")) %>%
+  filter(OTU %in% rownames(metaxa_deseq_sig)) %>%
+  unite(taxonomy, c(OTU, Kingdom, Phylum, Class, Order, Family, Genus), sep = "; ") %>%
+  gather(Library, Reads, -taxonomy) %>%
+  left_join(metadata %>% rownames_to_column("Library")) %>%
+  mutate(Reads = sqrt(Reads)) %>%
+  ggplot(aes(x = Library, y = taxonomy, fill = Reads)) +
+  geom_tile() +
+  facet_grid(cols = vars(Ecosystem), scale = "free") +
+  scale_fill_gradient(low = "white", high = "skyblue4", name = "Reads (square root)") +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0))
 ```
 
 ### MEGAN

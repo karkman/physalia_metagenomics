@@ -51,7 +51,7 @@ It just won't copy some intermediate files.
 cp -r ~/Share/ASSEMBLY_MEGAHIT/ ./
 ```
 
-Inside the folder you'll find the assembly logs and the actual assembly folder for each sample.  
+Inside the folder you'll find the assembly logs inside the assembly folder for each sample.  
 Start by looking at the assembly logs with `less`.
 
 #### Questions about the assembly
@@ -63,6 +63,37 @@ Start by looking at the assembly logs with `less`.
 We will also assemble the Nanopore data using `metaFlye` (which is actually a version of the genome assembler `Flye` with different settings that are optimized for metagenomes).  
 You can read more about `Flye/metaflye` [here](https://github.com/fenderglass/Flye).
 
+The script we are using to run `metaFlye` is quite simple, but let's take a look at it using `less` (the script is located in `Scripts/METAFLYE.sh`).  
+
+Again, we are not actually running the long-read assembly as this takes some time.  
+Instead, you will find the assemblies already made in `Share/ASSEMBLY_METAFLYE`.  
+Let's copy the assembly folder as we have done before for `megahit`:
+
+```bash
+cp -r ~/Share/ASSEMBLY_METAFLYE/ ./
+```
+
+Look at the log files from `metaFlye` that are inside this folder (`Sample03.metaflye.log.txt` and `Sample04.metaflye.log.txt`) and answer the questions below.
+
+#### Questions about the assembly
+1. __How many contigs do we have in each assembly?__
+2. __What is the total assembly lenght of each assembly?__
+
+The downside of Nanopore (at the moment), is a somewhat higher error rate than Illumina.  
+But because we have sequenced the same samples using both Illumina and Nanopore, we can take advantage of the longer reads from Nanopore and the better error rates from Illumina.  
+We do that by correcting (polishing) the Nanopore assemblies using the short Illumina reads.  
+This will be done using `Pilon` [take a look here](https://github.com/broadinstitute/pilon/wiki).
+
+Let's take a look at the script that is located in `Scripts/PILON.sh`.  
+
+You will find inside the assemblies folder `ASSEMBLY_METAFLYE/Sample03` and `ASSEMBLY_METAFLYE/Sample04` folders the output from `Pilon`.  
+The `pilon.fasta` file is the corrected assembly, and the `pilon.changes` file is a list of every single change that `Pilon` made to the `metaFlye` assemblies.  
+Let's take a look at the first few lines of these files using head:
+
+```bash
+head ASSEMBLY_METAFLYE/Sample03/pilon.changes
+head ASSEMBLY_METAFLYE/Sample04/pilon.changes
+```
 
 ## Assembly QC
 

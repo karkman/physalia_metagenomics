@@ -34,3 +34,4 @@ for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
 done
 
 metaxa2_dc -o METAXA/metaxa_genus.txt METAXA/*level_6.txt
+metaxa2_dc -o METAXA/metaxa_species.txt METAXA/*level_7.txt

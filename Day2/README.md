@@ -158,7 +158,6 @@ otu_table(metaxa_genus)[metaxa_abund,]
 
 ```r
 metaxa_top10 <- prune_taxa(metaxa_abund, metaxa_genus)
-
 heatmap(as.matrix(sqrt(t(otu_table(metaxa_top10)))), col = rev(heat.colors(20)))  
 ```
 

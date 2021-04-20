@@ -372,13 +372,22 @@ By looking at the `Cutadapt` log, can you answer:
 - Overall, what is the percentage of base pairs that were kept?
 
 We can also take a look at how the trimmed data looks by running the QC steps (`FastQC` and `MultiQC`) again.  
-So let's run `FastQC` and `MultiQC` again for the trimmed data.  
+Since `FASTQC` takes time, we have done that for you and you will run the `MultiQC` part.
+Go to the `TRIMMED` folder and run the command from there.
 
 **REMEMBER**:
 - To check where you are with `pwd`.
 - To `cd` to the `TRIMMED` folder.
-- To create the `FASTQC` folder.  
 
-When you have finished, copy the `MultiQC` report to yor local machine using FileZilla and open it with a browser.  
+```bash
+conda activate QC_env
+cd TRIMMED
+ls -l
+cp -r ~/Share/FASTQC_TRIMMED/ .
+ls -l FASTQC_TRIMMED/
+multiqc FASTQC_TRIMMED/* -o FASTQC_TRIMMED -n multiqc_trimmed.html
+```
+
+When you have finished, copy the `MultiQC` report to your local machine using FileZilla and open it with a browser.  
 Compare this with the report obtained earlier for the raw data.  
 Does the data look better now?

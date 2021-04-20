@@ -60,8 +60,8 @@ Start by looking at the assembly logs with `less`.
 3. __Which sample gave the longest contig?__
 
 ### Long-read assembly with metaFlye
-We will also assemble the Nanopore data using `metaFlye` (which is actually a version of the genome assembler `Flye` with different settings that are optimized for metagenomes).  
-You can read more about `Flye/metaflye` [here](https://github.com/fenderglass/Flye).
+We will also assemble the Nanopore data using `metaFlye` (which is actually the genome assembler `Flye` but with different settings that are optimized for metagenomes).  
+You can read more about `Flye/metaFlye` [here](https://github.com/fenderglass/Flye).
 
 The script we are using to run `metaFlye` is quite simple, but let's take a look at it using `less` (the script is located in `Scripts/METAFLYE.sh`).  
 
@@ -73,7 +73,7 @@ Let's copy the assembly folder as we have done before for `megahit`:
 cp -r ~/Share/ASSEMBLY_METAFLYE/ ./
 ```
 
-Look at the log files from `metaFlye` that are inside this folder (`Sample03.metaflye.log.txt` and `Sample04.metaflye.log.txt`) and answer the questions below.
+Using `less`, look at the log files from `metaFlye` that are inside this folder (`Sample03.metaflye.log.txt` and `Sample04.metaflye.log.txt`) and answer the questions below.
 
 #### Questions about the assembly
 1. __How many contigs do we have in each assembly?__
@@ -82,11 +82,11 @@ Look at the log files from `metaFlye` that are inside this folder (`Sample03.met
 The downside of Nanopore (at the moment), is a somewhat higher error rate than Illumina.  
 But because we have sequenced the same samples using both Illumina and Nanopore, we can take advantage of the longer reads from Nanopore and the better error rates from Illumina.  
 We do that by correcting (polishing) the Nanopore assemblies using the short Illumina reads.  
-This will be done using `Pilon` [take a look here](https://github.com/broadinstitute/pilon/wiki).
+This will be done using `Pilon` ([take a look here](https://github.com/broadinstitute/pilon/wiki)).
 
 Let's take a look at the script that is located in `Scripts/PILON.sh`.  
 
-You will find inside the assemblies folder `ASSEMBLY_METAFLYE/Sample03` and `ASSEMBLY_METAFLYE/Sample04` folders the output from `Pilon`.  
+You will find inside the assemblies folders (`ASSEMBLY_METAFLYE/Sample03` and `ASSEMBLY_METAFLYE/Sample04`) the output from `Pilon`.  
 The `pilon.fasta` file is the corrected assembly, and the `pilon.changes` file is a list of every single change that `Pilon` made to the `metaFlye` assemblies.  
 Let's take a look at the first few lines of these files using head:
 
@@ -97,9 +97,12 @@ head ASSEMBLY_METAFLYE/Sample04/pilon.changes
 
 ## Assembly QC
 
-Now we have all the assemblies ready and we can use `metaquast` for quality control.  Activate the assembly environment if its not already activated and run metaquast all short and long read assemblies.
-First have a look at the different options meatquast has with `metaquast -h`.  
-You should at least check the options we are using.
+Now we have all the assemblies ready and we can use `metaquast` for quality control.  
+Activate the assembly environment if it's not already activated and run metaquast on all short- and long-read assemblies.
+
+But first, have a look at the different options meatquast has with `metaquast -h`.  
+You should at least check the options we are using.  
+Then run `metaquast`:
 
 ```bash
 metaquast.py ASSEMBLY_METAFLYE/*/pilon.fasta ASSEMBLY_MEGAHIT/*/final.contigs.fa \
@@ -109,8 +112,9 @@ metaquast.py ASSEMBLY_METAFLYE/*/pilon.fasta ASSEMBLY_MEGAHIT/*/final.contigs.fa
                --max-ref-number 0 &> metaquast.fast.log.txt
 ```
 
-Assembly QC takes ~15 min. After it is done, we will go through the report together.   
-Open the report file in the output folder.
+This will take ~15 min.  
+After it is done, we will go through the report together.   
+Open the report file in the output folder:
 
 ```bash
 less METAQUAST_FAST/report.txt

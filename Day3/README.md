@@ -55,12 +55,13 @@ Inside the folder you'll find the assembly logs and the actual assembly folder f
 Start by looking at the assembly logs with `less`.
 
 #### Questions about the assembly
-1. __Which version did we actually use for the assemblies?__
+1. __Which version of megahit did we actually use for the assemblies?__
 2. __How long did the assemblies take to finish?__
 3. __Which sample gave the longest contig?__
 
 ### Long-read assembly with metaFlye
-
+We will also assemble the Nanopore data using `metaFlye` (which is actually a version of the genome assembler `Flye` with different settings that are optimized for metagenomes).
+You can read more about `Flye/metaflye` [here](https://github.com/fenderglass/Flye).
 _Igor adds this part_
 
 

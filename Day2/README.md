@@ -158,7 +158,10 @@ otu_table(metaxa_genus)[metaxa_abund,]
 
 ```r
 metaxa_top10 <- prune_taxa(metaxa_abund, metaxa_genus)
-heatmap(as.matrix(sqrt(t(otu_table(metaxa_top10)))), col = rev(heat.colors(20)))  
+
+heatmap(as.matrix(sqrt(t(otu_table(metaxa_top10)))), col = rev(heat.colors(20)))
+
+tax_table(metaxa_top10)[rownames(otu_table(metaxa_top10)), ]
 ```
 
 #### Alpha diversity

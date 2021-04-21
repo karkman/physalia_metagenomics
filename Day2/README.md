@@ -192,6 +192,9 @@ ggplot(metaxa_ord_df, aes(x = X1, y = X2, color = Ecosystem)) +
   labs(x = "Axis-1", y = "Axis-2") +
   geom_text(label = row.names(metaxa_ord_df), nudge_y = 0.03) +
   theme(legend.position = "bottom")
+
+# Test if differences are significant
+adonis(metaxa_ord ~ Ecosystem, metadata)
 ```
 
 #### Differential abundance analysis

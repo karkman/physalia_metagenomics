@@ -2,7 +2,7 @@
 
 | Time      | Activity            | Slides                               | Hands-on                          |
 |-----------|---------------------|--------------------------------------|-----------------------------------|
-| Morning   | Metagenome assembly | [Link here](metagenome-assembly.pdf) | [Link here](#metagenome-assembly) |
+| Morning   | Metagenome assembly | [Link here](Assembly-and.QC.pdf)     | [Link here](#metagenome-assembly) |
 | Afternoon | Assembly QC         |                                      | [Link here](#assembly-qc)         |
 
 ## Metagenome assembly

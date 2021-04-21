@@ -108,7 +108,7 @@ You should at least check the options we are using.
 We will run `metaquast` inside a screen using the command `screen`. This way you can do other things or log out while `metaquast` is running and it won't be interrupted.
 
 Mini manual for `screen`:
-* `screen -S NAME`- open a screen and give it a session name `NAME`
+* `screen -S NAME` - open a screen and give it a session name `NAME`
 * `screen` - open new screen without specifying any name
 * `screen -ls` - list all open sessions
 * `ctrl + a` + `d` - to detach from a session (from inside the screen)

@@ -105,13 +105,13 @@ Activate the assembly environment if it's not already activated and run metaquas
 
 But first, have a look at the different options metaquast has with `metaquast -h`.  
 You should at least check the options we are using.  
-We will run `metaquast` inside a screen using the command `screen`. This way you can do other things or log out while `metaquast` is running and it won't be interrupted.
+We will run `metaquast` inside a screen using the command `screen`. This way you can do other things or log out while `metaquast` is running and it won't be interrupted.
 
 Mini manual for `screen`:
 * `screen -S NAME`- open a screen and give it a session name `NAME`
-* `screen` - open new screen without specifying any name
+* `screen`- open new screen without specifying any name
 * `screen -ls` - list all open sessions
-* `ctrl + a` + `d` - to detach from a session (from inside the screen)
+* `ctrl + a` + `d` - to detach from a session (from inside the screen)
 * `screen -r` - re-attach to a detached session
 * `screen -rD` - re-attach to a attached session
 * `exit` - close the screen and kill all processes running inside the screen (from inside the screen)
@@ -124,8 +124,8 @@ metaquast.py ASSEMBLY_METAFLYE/*/pilon.fasta ASSEMBLY_MEGAHIT/*/final.contigs.fa
                --fast \
                --max-ref-number 0 &> metaquast.fast.log.txt
 ```
-Detach from the screen with `ctrl+a` + `d`.  
-This will take ~10 min.  You can re-attach with `screen -r metaquast` to check whther it has finished.  
+Detach from the screen with `ctrl+a` + `d`.  
+This will take ~10 min.  You can re-attach with `screen -r metaquast` to check whther it has finished.  
 After it is done, we will go through the report together. Open the report file in the output folder:
 
 ```bash

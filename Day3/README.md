@@ -109,7 +109,7 @@ We will run `metaquast` inside a screen using the command `screen`. This way you
 
 Mini manual for `screen`:
 * `screen -S NAME`- open a screen and give it a session name `NAME`
-* `screen`- open new screen without specifying any name
+* `screen` - open new screen without specifying any name
 * `screen -ls` - list all open sessions
 * `ctrl + a` + `d` - to detach from a session (from inside the screen)
 * `screen -r` - re-attach to a detached session
@@ -125,7 +125,7 @@ metaquast.py ASSEMBLY_METAFLYE/*/pilon.fasta ASSEMBLY_MEGAHIT/*/final.contigs.fa
                --max-ref-number 0 &> metaquast.fast.log.txt
 ```
 Detach from the screen with `ctrl+a` + `d`.  
-This will take ~10 min.  You can re-attach with `screen -r metaquast` to check whther it has finished.  
+This will take ~10 min.  You can re-attach with `screen -r metaquast` to check whther it has finished.  
 After it is done, we will go through the report together. Open the report file in the output folder:
 
 ```bash

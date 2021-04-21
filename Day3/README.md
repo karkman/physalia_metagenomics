@@ -43,12 +43,14 @@ __Would you have changed something else and why?__
 
 When we're satisfied with the assembly options, we would start the assembly and wait from few hours to several days depending on your data and computational resources.  
 But we won't do it, since we don't have to time or the resources.  
-Instead, you can copy the assemblies and log files to your own folder from `Share/ASSEMBLY_MEGAHIT/`.  
-The copying will complain about permissions, but you don't need to worry about that.  
-It just won't copy some intermediate files.  
+Instead, you can use the assemblies and log files we have made and make soft link as before to your own folder.  
+We have removed some intermediate files, so the folder contains only some of the files `megahit` normally produces.  
+But the most important is the `final.contigs.fa` which cointains the final contigs as one might expect.
+
 
 ```bash
-cp -r ~/Share/ASSEMBLY_MEGAHIT/ ./
+cd ~/physalia_metagenomics
+ln -s ~/Share/ASSEMBLY_MEGAHIT/ ./
 ```
 
 Inside the folder you'll find the assembly logs inside the assembly folder for each sample.  
@@ -67,10 +69,11 @@ The script we are using to run `metaFlye` is quite simple, but let's take a look
 
 Again, we are not actually running the long-read assembly as this takes some time.  
 Instead, you will find the assemblies already made in `Share/ASSEMBLY_METAFLYE`.  
-Let's copy the assembly folder as we have done before for `megahit`:
+Let's make soft link to the assembly folder as we have done before for `megahit`:
 
 ```bash
-cp -r ~/Share/ASSEMBLY_METAFLYE/ ./
+cd ~/physalia_metagenomics
+ln -s ~/Share/ASSEMBLY_METAFLYE/ ./
 ```
 
 Using `less`, look at the log files from `metaFlye` that are inside this folder (`Sample03.metaflye.log.txt` and `Sample04.metaflye.log.txt`) and answer the questions below.
@@ -100,21 +103,30 @@ head ASSEMBLY_METAFLYE/Sample04/pilon.changes
 Now we have all the assemblies ready and we can use `metaquast` for quality control.  
 Activate the assembly environment if it's not already activated and run metaquast on all short- and long-read assemblies.
 
-But first, have a look at the different options meatquast has with `metaquast -h`.  
+But first, have a look at the different options metaquast has with `metaquast -h`.  
 You should at least check the options we are using.  
-Then run `metaquast`:
+We will run `metaquast` inside a screen using the command `screen`. This way you can do other things or log out while `metaquast` is running and it wonät be interrupted.
+
+Mini manual for `screen`:
+* `screen -S NAME`- open a screen and give it a session name `NAME`
+* `screen` - open new screen without specifying any name
+* `screen -ls` - list all open sessions
+* `ctrl + a` + `d` - to detach from a session (from inside the screen)
+* `screen -r` - re-attach to a detached session
+* `screen -rD` - re-attach to a attached session
+* `exit` - close the screen and kill all processes running inside the screen (from inside the screen)
 
 ```bash
+screen -S metaquast
 metaquast.py ASSEMBLY_METAFLYE/*/pilon.fasta ASSEMBLY_MEGAHIT/*/final.contigs.fa \
                -o METAQUAST_FAST \
-               --threads 1 \
+               --threads 2 \
                --fast \
                --max-ref-number 0 &> metaquast.fast.log.txt
 ```
-
-This will take ~15 min.  
-After it is done, we will go through the report together.   
-Open the report file in the output folder:
+Detach from the screen with `ctrl+a` + `d`.  
+This will take ~10 min.  You can re-attach with `screen -r metaquast` to check whther it has finished.  
+After it is done, we will go through the report together. Open the report file in the output folder:
 
 ```bash
 less METAQUAST_FAST/report.txt

@@ -25,10 +25,36 @@ After several rounds of binning and refining with `anvi-interactive` and `anvi-r
 We have then renamed the bins and made a summary of them with `anvi-summarize`.
 You can find the output of everything that has been done with the bins in `Share/BINNING_MEGAHIT`
 
-### GTDB
+### Taxonomic assignment with GTDB
 Normally we would like to learn more about the taxonomy of our MAGs.  
 Although `anvi'o` gives us a preliminary idea, we can use a more dedicated platform for taxonomic assignment of MAGs.  
 Here we will use `GTDBtk`, a tool to infer taxonomy for MAGs based on the GTDB database (you can - and probably should - read more about GTDB [here](https://gtdb.ecogenomic.org/)).  
+We have already run `GTDBtk` for you.  
+Let's take a look at what it produced for us:
+
+```bash
+ls -lt ~/Share/GTDB
+```
+
+Let's copy the two summary files:
+
+```bash
+cp ~/Share/GTDB/gtdbtk.bac120.summary.tsv .
+cp ~/Share/GTDB/gtdbtk.ar122.summary.tsv .
+```
+
+Particularly, let's look at `Sample03Short_MAG_00001`, the nice bin from yesterday that had no taxonomic assignment:
+
+```bash
+grep Sample03Short_MAG_00001 gtdbtk.bac120.summary.tsv
+```
+
+What other taxa we have?  
+Let's take a quick look with some `bash` magic:
+
+```bash
+cut -f 2 gtdbtk.bac120.summary.tsv | sed '1d' | sort | uniq -c | sort
+```
 
 ### Functional annotation
 Let's now annotate the MAGs against databases of functional genes.  

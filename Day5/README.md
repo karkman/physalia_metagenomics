@@ -36,12 +36,23 @@ for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
 done
 ```
 
+Since we're at it let's also take a couple of files summarizing the abundance of the MAGs across the different samples:
+
+```bash
+for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
+  cp ~/Share/BINNING_MEGAHIT/$SAMPLE/MAGsSummary/bins_across_samples/mean_coverage.txt MAGs/$SAMPLE.mean_coverage.txt
+  cp ~/Share/BINNING_MEGAHIT/$SAMPLE/MAGsSummary/bins_across_samples/detection.txt MAGs/$SAMPLE.detection.txt
+done
+```
+
 Later on we might import these summary tables to R.  
 For now let's take a look at how many MAGs we have:
 
 ```bash
 cat MAGs/*bins_summary.txt | grep _MAG_ | wc -l
 ```
+
+Not bad, not bad at all...
 
 ### Taxonomic assignment with GTDB
 Normally, one thing that we want to learn more about is the taxonomy of our MAGs.  

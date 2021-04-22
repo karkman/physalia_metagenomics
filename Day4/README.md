@@ -1,4 +1,4 @@
-# Day 3
+# Day 4
 
 | Time      | Activity            | Slides                               | Hands-on                          |
 |-----------|---------------------|--------------------------------------|-----------------------------------|
@@ -38,7 +38,7 @@ Then we can start to work with our data in anvi'o.
 Activate anvi'o v.7 virtual environment and copy the folder containing the tutorial files to you own course folder. Go to the folder and see what it contains.
 
 ```bash
-conda activate anvio-7s
+conda activate anvio-7
 cp -r ../Share/ANVI-TUTORIAL .
 cd ANVI-TUTORIAL
 ls -l
@@ -103,4 +103,4 @@ From there you can find the summary of each of your bins. In the next step we'll
 When you're ready it's time to again rename the bins and run the summary on them.  
 Name the new collection `Bins` and use prefix `Sample03`.
 
-Now we should have a collection of pretty good bins out of our data. The last step is to curate each bin to make sure it represent only one population. And finally after tthat we can call MAGs from our collection. 
+Now we should have a collection of pretty good bins out of our data. The last step is to curate each bin to make sure it represent only one population. And finally after tthat we can call MAGs from our collection.

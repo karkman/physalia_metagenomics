@@ -17,7 +17,7 @@ To be able to to do this, everyone needs to use a different port for tunneling a
 To connect to the cloud with your port (Linux/Mac):
 
 ```bash
-ssh -L PORT:localhost:PORT USERX@IP-ADDRESS
+ssh -i KEY.pem -L PORT:localhost:PORT USERX@IP-ADDRESS
 ```
 
 And in windows using Putty:  

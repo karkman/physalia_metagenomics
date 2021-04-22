@@ -26,7 +26,9 @@ We have then renamed the bins and made a summary of them with `anvi-summarize`.
 You can find the output of everything that has been done with the bins in `Share/BINNING_MEGAHIT`
 
 ### GTDB
-
+Normally we would like to learn more about the taxonomy of our MAGs.  
+Although `anvi'o` gives us a preliminary idea, we can use a more dedicated platform for taxonomic assignment of MAGs.  
+Here we will use `GTDBtk`, a tool to infer taxonomy for MAGs based on the GTDB database (you can - and probably should - read more about GTDB [here](https://gtdb.ecogenomic.org/)).  
 
 ### Functional annotation
 Let's now annotate the MAGs against databases of functional genes.  

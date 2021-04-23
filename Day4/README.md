@@ -103,4 +103,15 @@ From there you can find the summary of each of your bins. In the next step we'll
 When you're ready it's time to again rename the bins and run the summary on them.  
 Name the new collection `Bins` and use prefix `Sample03`.
 
-Now we should have a collection of pretty good bins out of our data. The last step is to curate each bin to make sure it represent only one population. And finally after tthat we can call MAGs from our collection.
+Now we should have a collection of pretty good bins out of our data. The last step is to curate each bin to make sure it represent only one population. And finally after that we can call MAGs from our collection. We will call MAGs all bins that are more than 80 % complete and have less than 5 % redundancy.  
+
+```bash
+anvi-rename-bins -c CONTIGS.db -p PROFILE.db --collection-to-read Bins --collection-to-write MAGs --prefix Sample03 --report-file REPORT_MAGs \
+                  --call-MAGs --min-completion-for-MAG 80 --max-redundancy-for-MAG 5
+```
+
+And finally you can make a summary of your MAGs before moving on.
+
+```bash
+anvi-summarize -c CONTIGS.db -p PROFILE.db -C MAGs -o SUMMARY_MAGs
+```

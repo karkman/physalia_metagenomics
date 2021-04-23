@@ -127,17 +127,20 @@ for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
 done
 ```
 
-Since we're at it, let's also run a not so clean piece of code to get information about to which bin/MAG each gene call belongs (hellooooo @meren, there must be a better way??):
+Since we're at it, let's also recover the information about i) the genes found in each split and ii) which splits belong to wihch bin/MAG.  
+I don't think there's a straightforward way to get this using `anvi'o` commands, but because `CONTIGS.db` and `PROFILES.db` are [SQL](https://en.wikipedia.org/wiki/SQL) databases, we can access information within them using `sqlite3`:
 
 ```bash
 for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
-  BINS=$(cut -f 1 ~/Share/BINNING_MEGAHIT/$SAMPLE/MAGsSummary/bins_summary.txt | sed '1d')
+  # Get list of gene calls per split
+  printf '%s|%s|%s|%s|%s\n' splits gene_callers_id start stop percentage > MAGs/$SAMPLE.genes_per_split.txt
+  sqlite3 BINNING_MEGAHIT/$SAMPLE/CONTIGS.db 'SELECT * FROM genes_in_splits' >> MAGs/$SAMPLE.genes_per_split.txt
 
-  printf '%s\t%s\t%s\t%s\t%s\t%s\n' bins gene_callers_id contig start stop direction > MAGs/$SAMPLE.gene_calls.txt
 
-  for BIN in $BINS; do
-    sed '1d' ~/Share/BINNING_MEGAHIT/$SAMPLE/MAGsSummary/bin_by_bin/$BIN/$BIN-gene_calls.txt | awk -F '\t' -v BIN=$BIN -v OFS='\t' '{print BIN, $1, $2, $3, $4, $5}'
-  done >> MAGs/$SAMPLE.gene_calls.txt
+  # Get splits per bin
+  printf '%s|%s|%s\n' collection splits bins > MAGs/$SAMPLE.splits_per_bin.txt
+  sqlite3 BINNING_MEGAHIT/$SAMPLE/MERGED_PROFILES/PROFILE.db 'SELECT * FROM collections_of_splits' | grep 'MAGs|' >> MAGs/$SAMPLE.splits_per_bin.txt
+
 done
 ```
 

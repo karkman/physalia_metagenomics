@@ -16,7 +16,7 @@ git pull
 ```
 
 ### Recap of what has been done in anvi'o
-First let's take a better look at what has REALLY been done in `anvi'o`.  
+First let's take a better look at what has REALLY been done in `anvi'o` behind the scenes to prepare the data for binning.  
 Let's open the script:
 
 ```bash
@@ -52,13 +52,13 @@ For now let's take a look at how many MAGs we have:
 cat MAGs/*bins_summary.txt | grep _MAG_ | wc -l
 ```
 
-Not bad, not bad at all...
+Not too shabby, innit?
 
 ### Taxonomic assignment with GTDB
 Normally, one thing that we want to learn more about is the taxonomy of our MAGs.  
 Although `anvi'o` gives us a preliminary idea, we can use a more dedicated platform for taxonomic assignment of MAGs.  
 Here we will use `GTDBtk`, a tool to infer taxonomy for MAGs based on the GTDB database (you can - and probably should - read more about GTDB [here](https://gtdb.ecogenomic.org/)).  
-We have already run `GTDBtk` for you for; let's take a look at what it produced for us:
+We have already run `GTDBtk` for you for; let's take a look at what it produced:
 
 ```bash
 ls -lt ~/Share/GTDB
@@ -127,7 +127,7 @@ for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
 done
 ```
 
-Since we're at it, let's also run a not so clean piece of code to get information about to which bin/MAG each gene call belongs:
+Since we're at it, let's also run a not so clean piece of code to get information about to which bin/MAG each gene call belongs (hellooooo @meren, there must be a better way??):
 
 ```bash
 for SAMPLE in Sample01 Sample02 Sample03 Sample04; do

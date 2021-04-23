@@ -52,7 +52,12 @@ By completing this course, you will:
 - Assembly QC
 
 ### Thursday 22.04
-- Genome-resolved metagenomics (anvi'o)
+[Click here](Day4/)
+
+- Genome-resolved metagenomics
 
 ### Friday 23.04
+[Click here](Day5/)
+
 - MAG annotation and downstream analyses
+- Closing remarks and open discussion

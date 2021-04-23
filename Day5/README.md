@@ -1,12 +1,12 @@
 # Day 5
 
-| Time      | Activity            | Slides                               | Hands-on                            |
-|-----------|---------------------|--------------------------------------|-------------------------------------|
-| Morning   | MAG annotation      | [Link here](MAG-annotation.pdf)      | [Link here](#MAG-annotation-part-1) |
-| Afternoon | MAG annotation      |                                      | [Link here](#MAG-annotation-part-2) |
-| Afternoon | Closing thoughts    |                                      |                                     |
+| Time      | Activity                                        | Slides                                                  | Hands-on                                                    |
+|-----------|-------------------------------------------------|---------------------------------------------------------|-------------------------------------------------------------|
+| Morning   | MAG annotation and downstream analyses (Part 1) | [Link here](MAG-annotation-and-downstream-analyses.pdf) | [Link here](#MAG-annotation-and-downstream-analyses-part-1) |
+| Afternoon | MAG annotation and downstream analyses (Part 2) |                                                         | [Link here](#MAG-annotation-and-downstream-analyses-part-2) |
+| Afternoon | Closing remarks and open discussion             |                                                         |                                                             |
 
-## MAG annotation (Part 1)
+## MAG annotation and downstream analyses (Part 1)
 
 First login to the Amazon Cloud and pull possible changes on our GitHub page:
 
@@ -141,7 +141,7 @@ for SAMPLE in Sample01 Sample02 Sample03 Sample04; do
 done
 ```
 
-## MAG annotation (Part 2)
+## MAG annotation and downstream analyses (Part 2)
 
 Now let's get all these data into R to explore the MAGs taxonomic identity and functional potential.  
 First, download the `MAGs` folder to your computer using FileZilla.

@@ -1,9 +1,9 @@
 # Day 4
 
-| Time      | Activity            | Slides                               | Hands-on                          |
-|-----------|---------------------|--------------------------------------|-----------------------------------|
-| Morning   | Genome-resolved metagenomics         | [Link here](genome-resolced-metagenomics.pdf) | [Link here](#genome-resolved-metagenomics) |
-| Afternoon | Genome-resolved metagenomics cont'd  |                                      |          |
+| Time      | Activity                     | Slides                                        | Hands-on                                   |
+|-----------|------------------------------|-----------------------------------------------|--------------------------------------------|
+| Morning   | Genome-resolved metagenomics | [Link here](genome-resolced-metagenomics.pdf) | [Link here](#genome-resolved-metagenomics) |
+| Afternoon | Genome-resolved metagenomics |                                               | [Link here](#genome-resolved-metagenomics) |
 
 ## Genome-resolved metagenomics
 
